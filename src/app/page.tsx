@@ -1,10 +1,17 @@
 import Header from "@/components/layout/Header";
+import HeroSection from "@/components/sections/HeroSection";
+import SkillsSection from "@/components/sections/SkillsSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
 
 export default function Home() {
   return (
-    <div className="flex">
+    <>
       <Header />
-      <div className="w-[calc(100vw-200px)]">포트폴리오</div>
-    </div>
+      <HeroSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <AboutSection />
+    </>
   );
 }

@@ -1,21 +1,52 @@
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+:root {
+  --base-primary: #2b2b2b;
+  --background: #fff;
+}
 /* font */
-.jua-regular {
-  font-family: "Jua", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+@layer base {
+  html {
+    font-family: "IBM Plex Sans KR", sans-serif;
+    color: var(--base-primary);
+  }
 }
 
-.nanum-gothic-regular {
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+/* common */
+html {
+  scroll-behavior: smooth;
 }
-.nanum-gothic-bold {
-  font-family: "Nanum Gothic", sans-serif;
-  font-weight: 700;
-  font-style: normal;
+section {
+  @apply py-[130px] border-b-2 border-base-primary;
+}
+section.yellow {
+  @apply bg-primary;
+}
+
+/* skills section */
+.skills-mask {
+position: relative;
+  overflow: hidden;
+   -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+   mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.skills-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
 }

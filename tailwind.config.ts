@@ -8,13 +8,26 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        container: "1200px",
+      },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {},
-        base: {
-          primary: "#141414",
+        primary: {
+          DEFAULT: "#FFF4C7",
+          dark: "#FDD175",
         },
+        pastel: {
+          beige: "#EEE8DD",
+          green: "#DCE6DF",
+          blue: "#E3E8F0",
+          pink: "#F2D6D0",
+        },
+        base: {
+          primary: "#2B2B2B",
+          secondary: "#4A4A4A",
+        },
+        line: "#E7E7E2",
+        navi: "#1F2A44",
       },
     },
   },

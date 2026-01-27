@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --base-primary: #2b2b2b;
+  --background: #fff;
+}
+/* font */
+@layer base {
+  html {
+    font-family: "IBM Plex Sans KR", sans-serif;
+    color: var(--base-primary);
+  }
+}
+
+/* common */
+html {
+  scroll-behavior: smooth;
+}
+section {
+  @apply py-[130px] border-b-2 border-base-primary bg-primary-light;
+}
+section.yellow {
+  @apply bg-primary;
+}
+
+/* skills section */
+.skills-mask {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.skills-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.dot li {
+  position: relative;
+  &::before {
+    content: "";
+    @apply absolute left-[155px] top-1 w-6 h-6 rounded-full border-2 border-base-secondary;
+  }
+  &::after {
+    content: "";
+    @apply absolute left-[165px] top-10 w-[2px] h-[70%]  bg-base-secondary;
+  }
+  &:nth-child(1)::before {
+    @apply bg-pastel-beige;
+  }
+  &:nth-child(2)::before {
+    @apply bg-pastel-pink;
+  }
+  &:nth-child(3)::before {
+    @apply bg-pastel-green;
+  }
+}

@@ -24,7 +24,7 @@ const HeroSection = () => {
             <Button
               text="More About Me"
               onClick={() => {
-                document.getElementById("projects")?.scrollIntoView({
+                document.getElementById("about")?.scrollIntoView({
                   behavior: "smooth",
                 });
               }}

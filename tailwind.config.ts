@@ -8,12 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        "spin-slow": "spin 10s linear infinite",
+      },
       maxWidth: {
         container: "1200px",
       },
       colors: {
         primary: {
           DEFAULT: "#FFF4C7",
+          light: "#FAFAF7",
           dark: "#FDD175",
         },
         pastel: {

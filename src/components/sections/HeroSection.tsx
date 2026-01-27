@@ -12,12 +12,12 @@ const HeroSection = () => {
           <div>
             <State text="HELLO :)" color="green" />
             <p className="font-bold text-6xl my-7 leading-[1.2]">
-              Hi, I’m Kim Min Ji,
+              {" Hi, I'm Minji"}
               <br />
               Frontend Developer
             </p>
             <p className="mb-7 text-2xl text-base-secondary">
-              I'm a front-end developer with experience developing <br />{" "}
+              I&apos;m a front-end developer with experience developing <br />{" "}
               Next.js-based services and hands-on publishing collaboration.
             </p>
             {/* TODO: 밑에 버튼때문에 use client, 나중에 분리할지 고민해볼것. */}

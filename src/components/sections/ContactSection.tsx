@@ -40,8 +40,10 @@ const ContactSection = () => {
 
       setDoneMsg("전송되었습니다");
       form.reset();
-    } catch (err: any) {
-      setErrorMsg(err?.message || "전송 중 오류가 발생했습니다");
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "전송 중 오류가 발생했습니다";
+      setErrorMsg(message);
     } finally {
       setLoading(false);
     }

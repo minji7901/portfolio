@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     });
 
     return Response.json({ ok: true });
-  } catch (e) {
+  } catch {
     return Response.json(
       { error: "메일 전송 중 오류가 발생했습니다." },
       { status: 500 },

@@ -71,3 +71,10 @@ section.yellow {
     @apply bg-pastel-green;
   }
 }
+
+.cursor-custom {
+  cursor:
+    url("/icons/cursor.png") 16 16,
+    auto;
+  transition: 0.2s;
+}

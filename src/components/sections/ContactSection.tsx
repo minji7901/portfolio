@@ -116,7 +116,25 @@ const ContactSection = () => {
           />
         </form>
       </div>
-      <div className="max-w-container mx-auto w-full flex justify-between pt-[500px] items-center">
+      <div className="max-w-container mx-auto w-full flex justify-between pt-[500px] items-center relative">
+        <div className="absolute top-0 -left-32">
+          <Image
+            src="/icons/email-icon.svg"
+            alt="icon"
+            width={60}
+            height={60}
+            className="rotate-12"
+          />
+        </div>
+        <div className="absolute bottom-40 -right-32">
+          <Image
+            src="/icons/star-icon.svg"
+            alt="icon"
+            width={60}
+            height={60}
+            className="-rotate-12"
+          />
+        </div>
         <p className="font-bold text-base-secondary">©Made in Minji.</p>
         <div className="flex gap-5">
           <a

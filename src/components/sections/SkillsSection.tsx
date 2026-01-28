@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import State from "@/components/ui/State";
 import { skills } from "@/data/skills";
@@ -34,7 +35,17 @@ const SkillsSection = () => {
   return (
     <section className="yellow" id="skills">
       <div className="max-w-container mx-auto text-center">
-        <State text="MY SKILLS" color="green" />
+        <div className="relative">
+          <State text="MY SKILLS" color="green" />
+          <div className="absolute -top-10 -left-40">
+            <Image
+              src="/icons/star2-icon.svg"
+              alt="icon"
+              width={60}
+              height={40}
+            />
+          </div>
+        </div>
         <div className="grid grid-cols-3 mt-10 gap-5">
           {skills.map((skill) => (
             <div

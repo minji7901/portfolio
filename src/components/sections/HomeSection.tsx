@@ -6,18 +6,21 @@ import ProfileImg from "@/assets/images/hero/profile-img.png";
 
 const HeroSection = () => {
   return (
-    <section className="yellow pt-0" id="hero">
+    <section className="yellow pt-0" id="home">
       <div className="max-w-container mx-auto pt-[210px]">
         <div className="flex justify-between items-center">
           <div>
             <State text="HELLO :)" color="green" />
             <div className="relative">
-              <p className="font-bold text-6xl my-7 leading-[1.2]">
-                Hi, I&apos;m Minji
-                <br />
-                Frontend Developer
+              <p className="font-bold text-6xl my-7 leading-[1.3]">
+                Web Publisher
+                <span className="block mt-6 text-4xl leading-[3rem]">
+                  사용자 경험을 고려해 설계하고,
+                  <br />
+                  구조적으로 구현하는 퍼블리셔입니다.
+                </span>
               </p>
-              <div className="absolute top-0 right-32">
+              <div className="absolute top-5 -left-36">
                 <Image
                   src="/icons/heart-icon.svg"
                   alt="icon"
@@ -26,15 +29,15 @@ const HeroSection = () => {
                 />
               </div>
             </div>
-            <p className="mb-7 text-2xl text-base-secondary">
-              I&apos;m a front-end developer with experience developing <br />
-              Next.js-based services and hands-on publishing collaboration.
-            </p>
-
+            <ul className="my-8 text-xl text-base-secondary space-y-2">
+              <li>- 반응형 UI 설계 및 SCSS 구조화</li>
+              <li>- 운영 환경을 고려한 유지보수 중심 마크업</li>
+              <li>- 디자인 의도 1px까지 구현</li>
+            </ul>
             <Button
               text="More About Me"
               onClick={() => {
-                document.getElementById("about")?.scrollIntoView({
+                document.getElementById("experience")?.scrollIntoView({
                   behavior: "smooth",
                 });
               }}

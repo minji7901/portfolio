@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 
-const SECTION_IDS = ["hero", "projects", "skills", "about", "contact"];
+const SECTION_IDS = ["home", "work", "experience", "contact"];
 
 const Header = () => {
-  const [active, setActive] = useState("hero");
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
     const observer = new IntersectionObserver(

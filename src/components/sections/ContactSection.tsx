@@ -54,8 +54,8 @@ const ContactSection = () => {
       <div className="absolute left-1/2 -translate-x-1/2 -top-20 border-2 border-base-primary px-20 py-14 max-w-[1000px] mx-auto rounded-xl text-center bg-primary-light w-full">
         <State text="CONTACT" color="pink" />
         <p className="my-10 font-bold text-xl leading-8">
-          사용자를 배려하는 화면과 구조를 만드는 일을 좋아합니다. <br /> 좋은
-          인연으로 이어질 수 있다면 언제든지 연락 주세요.
+          사용자를 배려하는 <strong>마크업과 UI 구현</strong>을 좋아합니다.
+          <br /> 좋은 인연으로 이어질 수 있다면 언제든지 연락 주세요.
         </p>
         <form onSubmit={handleSubmit}>
           <table className="text-left w-full mb-20">

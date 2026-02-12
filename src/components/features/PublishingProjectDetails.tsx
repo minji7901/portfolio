@@ -12,11 +12,11 @@ const ProjectDetails = ({ item }: { item: publishingPracticeItem }) => {
   const hasLink = Boolean(item.link);
 
   return (
-    <details className="group border border-line rounded-2xl p-6 open:shadow-md transition">
+    <details className="group border border-line rounded-2xl p-6 open:shadow-md transition bg-white">
       <summary className="flex justify-between items-center cursor-pointer list-none">
         <div className="min-w-0">
           <h4 className="text-lg font-semibold truncate">{item.title}</h4>
-          <p className="text-sm text-base-secondary mt-1">{item.subtitle}</p>
+          <p className="text-sm  mt-1">{item.subtitle}</p>
 
           <div className="flex flex-wrap gap-2 mt-3">
             {item.tags.map((t) => (
@@ -30,7 +30,7 @@ const ProjectDetails = ({ item }: { item: publishingPracticeItem }) => {
         </span>
       </summary>
 
-      <div className="mt-6 grid md:grid-cols-2 gap-6 text-sm leading-relaxed">
+      <div className="mt-6 grid grid-cols-2 gap-6 text-sm leading-relaxed">
         <div>
           <h5 className="font-semibold mb-2">{item.leftTitle}</h5>
           <ul className="list-inside space-y-1 text-base-secondary">

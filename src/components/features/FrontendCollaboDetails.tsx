@@ -1,17 +1,18 @@
-import Link from "next/link";
 import type { collabProjectItem } from "@/types/project";
-import Button from "../ui/Button";
+import Button from "@/components/ui/Button";
 
 const FrontendCollaboDetails = ({ item }: { item: collabProjectItem }) => {
   return (
-    <div className="border border-line rounded-2xl p-5 text-center">
-      <img className="mx-auto" src={item.image.src} alt={item.title} />
-      <strong className="block mt-5 text-lg text-base-secondary">
-        {item.title}
-      </strong>
-      <p className="my-3 text-base-secondary">{item.description}</p>
+    <div className="border border-line rounded-2xl p-5 text-center bg-white">
+      <img
+        className="mx-auto border border-line rounded-xl"
+        src={item.image.src}
+        alt={item.title}
+      />
+      <strong className="block mt-5 text-lg ">{item.title}</strong>
+      <p className="my-3 ">{item.description}</p>
       <div className="mb-5">
-        <p className="break-keep text-sm text-base-secondary">
+        <p className="break-keep text-sm ">
           {item.tech.map((tag) => tag).join(", ")}
         </p>
       </div>

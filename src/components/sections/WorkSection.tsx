@@ -18,9 +18,7 @@ const WorkSection = () => {
             <h2 className="text-3xl font-bold mt-6">
               부동산 등기업무 서비스 플랫폼 리뉴얼
             </h2>
-            <p className="mt-3 text-base-secondary">
-              2025.10 - 2025.12 · 단독 퍼블리싱
-            </p>
+            <p className="mt-3">2025.10 - 2025.12 · 단독 퍼블리싱</p>
 
             <div className="flex justify-center gap-3 mt-6 flex-wrap">
               <span className="px-3 py-1 bg-line rounded-full text-sm font-semibold">
@@ -61,7 +59,7 @@ const WorkSection = () => {
             <div className="space-y-3">
               <div>
                 <p className="font-semibold">- 디자인 스케일 조정</p>
-                <p className="text-sm text-base-secondary mt-1">
+                <p className="text-base-secondary mt-1">
                   실제 서비스 기준으로 폰트/여백/비율 재정립
                 </p>
               </div>
@@ -69,7 +67,7 @@ const WorkSection = () => {
                 <p className="font-semibold">
                   - input type=&quot;date&quot; 브라우저/OS 이슈
                 </p>
-                <p className="text-sm text-base-secondary mt-1">
+                <p className="text-base-secondary mt-1">
                   커스텀 스타일 전략 적용 및 환경 테스트
                 </p>
               </div>
@@ -77,7 +75,7 @@ const WorkSection = () => {
                 <p className="font-semibold">
                   - FullCalendar 스타일 커스터마이징
                 </p>
-                <p className="text-sm text-base-secondary mt-1">
+                <p className="text-base-secondary mt-1">
                   SCSS 기반 오버라이드로 서비스 톤에 맞게 재정의
                 </p>
               </div>
@@ -100,7 +98,7 @@ const WorkSection = () => {
         <div className="mt-24">
           <div className="text-center">
             <State text="PUBLISHING PRACTICE" color="pink" />
-            <div className="mt-4 text-base-secondary">
+            <div className="mt-4">
               <p>
                 렌트카 서비스 회사 재직 당시, <br />
                 다양한 브랜드/금융사 제휴 프로모션을
@@ -121,7 +119,7 @@ const WorkSection = () => {
               <PublishingProjectDetail key={item.id} item={item} />
             ))}
           </div>
-          <p className="text-sm text-base-secondary">
+          <p className="text-base-secondary">
             * 일부 프로젝트는 회사 사유로 링크 공개가 어렵습니다.
           </p>
         </div>
@@ -132,7 +130,7 @@ const WorkSection = () => {
         <div className="mt-24">
           <div className="text-center">
             <State text="FRONTEND COLLABORATION PROJECTS" color="pink" />
-            <div className="mt-4 text-base-secondary">
+            <div className="mt-4">
               <p>팀 단위로 진행한 프론트엔드 프로젝트들입니다.</p>
             </div>
           </div>

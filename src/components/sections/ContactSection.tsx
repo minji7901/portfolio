@@ -50,7 +50,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="relative yellow pb-14">
+    <section id="contact" className="relative pb-14 yellow">
       <div className="absolute left-1/2 -translate-x-1/2 -top-20 border-2 border-base-primary px-20 py-14 max-w-[1000px] mx-auto rounded-xl text-center bg-primary-light w-full">
         <State text="CONTACT" color="pink" />
         <p className="my-10 font-bold text-xl leading-8">
@@ -165,7 +165,7 @@ const ContactSection = () => {
               className=""
             />
           </a>
-          <a
+          {/* <a
             className="border-2 border-base-primary rounded-md bg-primary-light p-1"
             href="https://www.notion.so/Frontend-Developer-2e2cd058617b8109a06bcb40b83cdd54?source=copy_link"
             target="_blank"
@@ -178,7 +178,7 @@ const ContactSection = () => {
               height={30}
               className=""
             />
-          </a>
+          </a> */}
         </div>
       </div>
     </section>

@@ -15,7 +15,7 @@ const ExperienceSection = () => {
             <a
               href="https://bom-na.tistory.com/"
               target="_blank"
-              className="w-28 aspect-square grid place-items-center absolute top-0 right-0 border-2 border-base-primary rounded-full bg-primary"
+              className="w-28 aspect-square grid place-items-center absolute top-0 right-0 border-2 border-base-primary rounded-full bg-white"
             >
               <svg
                 viewBox="0 0 200 200"
@@ -58,7 +58,7 @@ const ExperienceSection = () => {
               />
             </div>
             <p className="my-3 font-semibold text-2xl">More about me</p>
-            <p className="text-base-secondary text-lg leading-8">
+            <p className=" text-lg leading-8">
               웹 퍼블리셔 김민지입니다. <br />
               <br />
               다양한 프로젝트 환경에서 <br />
@@ -86,7 +86,7 @@ const ExperienceSection = () => {
               <strong className="w-32 text-right text-lg">2025</strong>
               <div>
                 <strong className="text-lg">Freelance Web Publisher</strong>
-                <p className="pt-3 text-base-secondary leading-7">
+                <p className="pt-3  leading-7">
                   퍼블리싱 프리랜서 프로젝트를 단독 수행하며 <br />
                   페이지/컴포넌트 단위로 작업 우선순위를 조율하고, 일정에 맞춰
                   안정적으로 산출물을 납품했습니다. <br />
@@ -102,7 +102,7 @@ const ExperienceSection = () => {
               <strong className="w-32 text-right text-lg">2022 - 2024</strong>
               <div>
                 <strong className="text-lg">Web Publisher</strong>
-                <p className="pt-3 text-base-secondary leading-7">
+                <p className="pt-3  leading-7">
                   다수의 웹 프로젝트에서 퍼블리셔로 참여하며 15개 이상의
                   사이트를 단독 퍼블리싱했습니다.
                   <br />
@@ -121,7 +121,7 @@ const ExperienceSection = () => {
               <strong className="w-32 text-right text-lg">2021 - 2022</strong>
               <div>
                 <strong className="text-lg">Web Publisher</strong>
-                <p className="pt-3 text-base-secondary leading-7">
+                <p className="pt-3  leading-7">
                   외부 개발사 및 YBM과 협업하는 프로젝트에서 퍼블리싱을
                   담당했습니다. <br />
                   사수와 교대 근무 형태로 운영 이슈를 대응하며, 일정 내 배포를

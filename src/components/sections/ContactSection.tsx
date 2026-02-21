@@ -51,7 +51,7 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="relative pb-14 yellow">
-      <div className="absolute left-1/2 -translate-x-1/2 -top-20 border-2 border-base-primary px-20 py-14 max-w-[1000px] mx-auto rounded-xl text-center bg-primary-light w-full">
+      <div className="z-10 absolute left-1/2 -translate-x-1/2 -top-20 border-2 border-base-primary px-20 py-14 max-w-[1000px] mx-auto rounded-xl text-center bg-primary-light w-full">
         <State text="CONTACT" color="pink" />
         <p className="my-10 font-bold text-xl leading-8">
           사용자를 배려하는 <strong>마크업과 UI 구현</strong>을 좋아합니다.

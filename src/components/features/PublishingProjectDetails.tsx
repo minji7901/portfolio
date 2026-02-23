@@ -8,7 +8,11 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-const ProjectDetails = ({ item }: { item: publishingPracticeItem }) => {
+const PublishingProjectDetail = ({
+  item,
+}: {
+  item: publishingPracticeItem;
+}) => {
   const hasLink = Boolean(item.link);
 
   return (
@@ -66,4 +70,4 @@ const ProjectDetails = ({ item }: { item: publishingPracticeItem }) => {
   );
 };
 
-export default ProjectDetails;
+export default PublishingProjectDetail;

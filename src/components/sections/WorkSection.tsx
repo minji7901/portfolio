@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import Image from "next/image";
 import State from "@/components/ui/State";
 import PublishingProjectDetail from "@/components/features/PublishingProjectDetails";
 import FrontendCollaboDetails from "@/components/features/FrontendCollaboDetails";
@@ -8,7 +8,7 @@ import { publishingPracticeProjects, collabProjects } from "@/data/project";
 const WorkSection = () => {
   return (
     <section id="work" className="py-32">
-      <div className="max-w-container mx-auto px-6">
+      <div className="max-w-container mx-auto px-6 relative">
         {/* =========================
             1) Recent Publishing Work
         ========================== */}
@@ -20,16 +20,19 @@ const WorkSection = () => {
             </h2>
             <p className="mt-3">2025.10 - 2025.12 · 단독 퍼블리싱</p>
 
-            <div className="flex justify-center gap-3 mt-6 flex-wrap">
-              <span className="px-3 py-1 bg-line rounded-full text-sm font-semibold">
-                100+ Screens
-              </span>
-              <span className="px-3 py-1 bg-line rounded-full text-sm font-semibold">
-                1 Month Ahead
-              </span>
-              <span className="px-3 py-1 bg-line rounded-full text-sm font-semibold">
-                Nuxt.js / SCSS
-              </span>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+              <div className="border border-navi rounded-2xl p-6 bg-white">
+                <p className="text-base-secondary font-semibold">Role</p>
+                <p className="mt-1">단독 퍼블리싱 · 구조 설계 · QA 대응</p>
+              </div>
+              <div className="border border-navi rounded-2xl p-6 bg-white">
+                <p className="text-base-secondary font-semibold">Scope</p>
+                <p className="mt-1">100+ 화면 · 팝업 포함 · 공통 컴포넌트</p>
+              </div>
+              <div className="border border-navi rounded-2xl p-6 bg-white">
+                <p className="text-base-secondary font-semibold">Outcome</p>
+                <p className="mt-1">일정 1개월 단축 · 유지보수 구조 정립</p>
+              </div>
             </div>
           </div>
 
@@ -56,27 +59,34 @@ const WorkSection = () => {
             <h3 className="text-xl font-semibold mb-4">
               # Key Issues & Solutions
             </h3>
-            <div className="space-y-3">
-              <div>
-                <p className="font-semibold">- 디자인 스케일 조정</p>
-                <p className="text-base-secondary mt-1">
-                  실제 서비스 기준으로 폰트/여백/비율 재정립
-                </p>
-              </div>
+            <div className="space-y-4">
               <div>
                 <p className="font-semibold">
-                  - input type=&quot;date&quot; 브라우저/OS 이슈
+                  - 디자인 스케일 조정(서비스 기준 재정립)
                 </p>
                 <p className="text-base-secondary mt-1">
-                  커스텀 스타일 전략 적용 및 환경 테스트
+                  폰트/여백/컴포넌트 비율을 실제 사용 시나리오에 맞춰
+                  재정의하고, 화면 전반에 일관 적용
                 </p>
               </div>
+
+              <div>
+                <p className="font-semibold">
+                  - input type="date" 환경별 렌더링 이슈
+                </p>
+                <p className="text-base-secondary mt-1">
+                  브라우저/OS별 스타일 한계를 고려해 커스텀 전략을 적용하고,
+                  테스트 범위를 명확히 정의해 QA 리스크를 줄임
+                </p>
+              </div>
+
               <div>
                 <p className="font-semibold">
                   - FullCalendar 스타일 커스터마이징
                 </p>
                 <p className="text-base-secondary mt-1">
-                  SCSS 기반 오버라이드로 서비스 톤에 맞게 재정의
+                  SCSS 오버라이드 구조를 정리해 서비스 톤앤매너에 맞게
+                  재정의하고, 유지보수 가능한 형태로 관리
                 </p>
               </div>
             </div>
@@ -139,6 +149,14 @@ const WorkSection = () => {
               <FrontendCollaboDetails key={item.id} item={item} />
             ))}
           </div>
+        </div>
+        <div className="absolute -bottom-40 right-32">
+          <Image
+            src="/icons/arrow-icon.svg"
+            alt="icon"
+            width={150}
+            height={100}
+          />
         </div>
       </div>
     </section>

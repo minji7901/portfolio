@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const SECTION_IDS = ["home", "work", "experience", "contact"];
+const SECTION_IDS = ["home", "experience", "work", "contact"];
 
 const Header = () => {
   const [active, setActive] = useState("home");

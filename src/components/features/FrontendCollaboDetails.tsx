@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { collabProjectItem } from "@/types/project";
-import Button from "@/components/ui/Button";
 
 const FrontendCollaboDetails = ({ item }: { item: collabProjectItem }) => {
   return (
@@ -12,17 +11,19 @@ const FrontendCollaboDetails = ({ item }: { item: collabProjectItem }) => {
       />
       <strong className="block mt-5 text-lg ">{item.title}</strong>
       <p className="my-3 ">{item.description}</p>
-      <div className="mb-5">
-        <p className="break-keep text-sm ">
+      <div className="mb-7">
+        <p className="break-keep text-sm">
           {item.tech.map((tag) => tag).join(", ")}
         </p>
       </div>
-      <Button
-        text="View on GitHub"
-        onClick={() => {
-          window.open(item.github!, "_blank");
-        }}
-      />
+      <a
+        href={item.github}
+        className="px-5 py-2 rounded-full border border-base-secondary text-base-secondary text-sm font-semibold"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View GitHub
+      </a>
     </div>
   );
 };

@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import State from "@/components/ui/State";
 import Button from "@/components/ui/Button";
 import TypeWrite from "../ui/TypeWrite";
+import { motion, Variants } from "motion/react";
+import StyleSheet from "@/components/ui/LoadingDot";
 
 const ContactSection = () => {
   const [loading, setLoading] = useState(false);
@@ -39,7 +41,7 @@ const ContactSection = () => {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.error || "전송에 실패했습니다");
 
-      setDoneMsg("전송되었습니다");
+      setDoneMsg("전송되었습니다!");
       form.reset();
     } catch (err: unknown) {
       const message =
@@ -48,6 +50,17 @@ const ContactSection = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const dotVariants: Variants = {
+    pulse: {
+      scale: [1, 1.5, 1],
+      transition: {
+        duration: 1.2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
@@ -106,17 +119,19 @@ const ContactSection = () => {
               {errorMsg}
             </p>
           )}
-          {doneMsg && (
-            <p className="text-sm font-semibold text-green-700 mb-3">
-              {doneMsg}
-            </p>
+          {loading ? (
+            <motion.div
+              animate="pulse"
+              transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
+              className="container"
+            >
+              <StyleSheet />
+            </motion.div>
+          ) : doneMsg ? (
+            <p className="text-green-500 font-semibold text-lg">{doneMsg}</p>
+          ) : (
+            <Button text="Submit" type="submit" />
           )}
-
-          <Button
-            text={loading ? "Sending..." : "Submit"}
-            type="submit"
-            disabled={loading}
-          />
         </form>
       </div>
       <div className="max-w-container mx-auto w-full flex justify-between pt-[500px] items-center relative">

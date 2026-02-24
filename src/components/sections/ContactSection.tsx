@@ -4,6 +4,9 @@ import Image from "next/image";
 import React, { useState } from "react";
 import State from "@/components/ui/State";
 import Button from "@/components/ui/Button";
+import TypeWrite from "../ui/TypeWrite";
+import { motion, Variants } from "motion/react";
+import StyleSheet from "@/components/ui/LoadingDot";
 
 const ContactSection = () => {
   const [loading, setLoading] = useState(false);
@@ -38,7 +41,7 @@ const ContactSection = () => {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data?.error || "전송에 실패했습니다");
 
-      setDoneMsg("전송되었습니다");
+      setDoneMsg("전송되었습니다!");
       form.reset();
     } catch (err: unknown) {
       const message =
@@ -49,13 +52,26 @@ const ContactSection = () => {
     }
   };
 
+  const dotVariants: Variants = {
+    pulse: {
+      scale: [1, 1.5, 1],
+      transition: {
+        duration: 1.2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <section id="contact" className="relative pb-14 yellow">
       <div className="z-10 absolute left-1/2 -translate-x-1/2 -top-20 border-2 border-base-primary px-20 py-14 max-w-[1000px] mx-auto rounded-xl text-center bg-primary-light w-full">
         <State text="CONTACT" color="pink" />
         <p className="my-10 font-bold text-xl leading-8">
-          사용자를 배려하는 <strong>마크업과 UI 구현</strong>을 좋아합니다.
-          <br /> 좋은 인연으로 이어질 수 있다면 언제든지 연락 주세요.
+          <TypeWrite
+            text={`사용자를 배려하는 마크업과 UI 구현을 좋아합니다.
+              좋은 인연으로 이어질 수 있다면 언제든지 연락 주세요.`}
+          />
         </p>
         <form onSubmit={handleSubmit}>
           <table className="text-left w-full mb-20">
@@ -103,17 +119,19 @@ const ContactSection = () => {
               {errorMsg}
             </p>
           )}
-          {doneMsg && (
-            <p className="text-sm font-semibold text-green-700 mb-3">
-              {doneMsg}
-            </p>
+          {loading ? (
+            <motion.div
+              animate="pulse"
+              transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
+              className="container"
+            >
+              <StyleSheet />
+            </motion.div>
+          ) : doneMsg ? (
+            <p className="text-green-500 font-semibold text-lg">{doneMsg}</p>
+          ) : (
+            <Button text="Submit" type="submit" />
           )}
-
-          <Button
-            text={loading ? "Sending..." : "Submit"}
-            type="submit"
-            disabled={loading}
-          />
         </form>
       </div>
       <div className="max-w-container mx-auto w-full flex justify-between pt-[500px] items-center relative">

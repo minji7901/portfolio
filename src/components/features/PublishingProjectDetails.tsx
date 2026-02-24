@@ -8,7 +8,11 @@ const Pill = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-const ProjectDetails = ({ item }: { item: publishingPracticeItem }) => {
+const PublishingProjectDetail = ({
+  item,
+}: {
+  item: publishingPracticeItem;
+}) => {
   const hasLink = Boolean(item.link);
 
   return (
@@ -52,12 +56,14 @@ const ProjectDetails = ({ item }: { item: publishingPracticeItem }) => {
 
       <div className="flex justify-center mt-6">
         {hasLink ? (
-          <Button
-            text="View Project"
-            onClick={() => {
-              window.open(item.link!, "_blank");
-            }}
-          />
+          <a
+            href={item.link}
+            className="px-5 py-2 rounded-full border border-base-secondary text-base-secondary text-sm font-semibold"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project
+          </a>
         ) : (
           <></>
         )}
@@ -66,4 +72,4 @@ const ProjectDetails = ({ item }: { item: publishingPracticeItem }) => {
   );
 };
 
-export default ProjectDetails;
+export default PublishingProjectDetail;

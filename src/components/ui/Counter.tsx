@@ -9,7 +9,7 @@ interface Props {
   suffix?: string;
 }
 
-export default function Counter({ to, duration = 1.5, suffix = "" }: Props) {
+const Counter = ({ to, duration = 1.5, suffix = "" }: Props) => {
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
 
@@ -25,3 +25,5 @@ export default function Counter({ to, duration = 1.5, suffix = "" }: Props) {
     </motion.span>
   );
 }
+
+export default Counter;

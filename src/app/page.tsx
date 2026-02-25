@@ -4,14 +4,16 @@ import ExperienceSection from "@/components/sections/ExperienceSection";
 import WorkSection from "@/components/sections/WorkSection";
 import ContactSection from "@/components/sections/ContactSection";
 
-export default function Home() {
+ const Home = () => {
   return (
     <>
       <Header />
       <HomeSection />
-      <ExperienceSection />
       <WorkSection />
+      <ExperienceSection />
       <ContactSection />
     </>
   );
 }
+
+export default Home;

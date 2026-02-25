@@ -127,7 +127,7 @@ const WorkSection = () => {
             <div className="p-8">
               <div className="flex flex-wrap gap-2 text-sm font-semibold text-base-secondary">
                 <span># 사내 단독 진행</span>
-                <span># 10+ pages</span>
+                <span># 10+ Pages</span>
                 <span># Interaction / Motion</span>
               </div>
               <p className="mt-2 text-base-primary">

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import State from "@/components/ui/State";
 import Button from "@/components/ui/Button";
 import TypeWrite from "../ui/TypeWrite";
-import { motion, Variants } from "motion/react";
+import { motion, Variants } from "framer-motion";
 import StyleSheet from "@/components/ui/LoadingDot";
 
 const ContactSection = () => {

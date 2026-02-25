@@ -50,7 +50,7 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
   {
     id: "pub-3",
     title: "캐피탈 제휴 프로모션 마이크로사이트",
-    subtitle: "사내 단독 진행 · 반응형 · 10+ pages · 인터랙션/모션 포함",
+    subtitle: "사내 단독 진행 · 반응형 · 10+ Pages · 인터랙션/모션 포함",
     tags: ["HTML", "SCSS", "jQuery", "Animation", "Responsive"],
     leftTitle: "담당 영역",
     leftList: [
@@ -111,7 +111,7 @@ export const collabProjects: collabProjectItem[] = [
       "Next.js",
       "TypeScript",
       "Vercel",
-      "Tansack query",
+      "TanStack Query",
       "Tailwind CSS",
       "zustand",
       "supabase",

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, Variants } from "motion/react";
+import { motion, Variants } from "framer-motion";
 
-function LoadingThreeDotsPulse() {
+const LoadingThreeDotsPulse = () => {
   const dotVariants: Variants = {
     pulse: {
       scale: [1, 1.5, 1],

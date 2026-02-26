@@ -1,6 +1,12 @@
 import type { StaticImageData } from "next/image";
-import img1 from "@/assets/images/projects/img1.png";
-import img2 from "@/assets/images/projects/img2.png";
+import pubImg0 from "@/assets/images/projects/pubImg0.png";
+import pubImg1 from "@/assets/images/projects/pubImg1.png";
+import pubImg2 from "@/assets/images/projects/pubImg2.png";
+import pubImg3 from "@/assets/images/projects/pubImg3.png";
+import pubImg4 from "@/assets/images/projects/pubImg4.png";
+import pubImg5 from "@/assets/images/projects/pubImg5.png";
+import collabImg1 from "@/assets/images/projects/collabImg1.png";
+import collabImg2 from "@/assets/images/projects/collabImg2.png";
 import type {
   publishingPracticeItem,
   collabProjectItem,
@@ -8,7 +14,47 @@ import type {
 
 export const publishingPracticeProjects: publishingPracticeItem[] = [
   {
+    id: "pub-0",
+    title: "등기업무 서비스 플랫폼 리뉴얼",
+    subtitle:
+      "프리랜서 단독 진행 · PC Web · 100+ Pages · 기존 대비 1개월 조기 마감",
+    tags: ["Vue", "Nuxt", "SCSS", "FullCalendar", "Swiper", "Legacy Renewal"],
+    leftTitle: "담당 영역",
+    leftList: [
+      "100페이지 이상 단독 퍼블리싱 (팝업 포함)",
+      "기존 서비스 구조 분석 후 UI 마크업 전면 재구성",
+      "Nuxt 기반 컴포넌트 구조에 맞춘 퍼블리싱 작업",
+      "SCSS 공통 구조 설계 및 유지보수 고려한 스타일 체계 정리",
+      "PC 전용 화면 최적화 작업",
+    ],
+    rightTitle: "기술 적용 & 개선 포인트",
+    rightList: [
+      "FullCalendar 커스터마이징 및 일정 UI 구조 개선",
+      "Swiper 기반 배너/콘텐츠 슬라이드 구현",
+      "기존 레거시 마크업 정리 및 시맨틱 구조 개선",
+      "프로젝트 일정 1개월 단축 마감",
+    ],
+    image: pubImg0,
+    //link: "리뉴얼 전 사이트 링크 (리뉴얼 버전은 미배포 상태)",
+  },
+  {
     id: "pub-1",
+    title: "캐피탈 제휴 프로모션 마이크로사이트",
+    subtitle: "사내 단독 진행 · 반응형 · 10+ Pages · 인터랙션/모션 포함",
+    tags: ["HTML", "SCSS", "jQuery", "Animation", "Responsive"],
+    leftTitle: "담당 영역",
+    leftList: [
+      "10페이지 이상 단독 퍼블리싱",
+      "반응형 대응 및 SCSS 기반 공통 레이아웃 적용",
+      "jQuery로 타이머/슬라이드 등 간단 기능 구현",
+    ],
+    rightTitle: "모션/효과 구현",
+    rightList: ["차량 이동 모션", "타이머 모션", "슬라이드/전환 애니메이션"],
+    link: "https://nh.rchada.com/",
+    image: pubImg1,
+  },
+  {
+    id: "pub-2",
     title: "B2B 교육 서비스 퍼블리싱",
     subtitle: "에이전시 프로젝트 · 단독/협업 · 반응형 · 100페이지 이상",
     tags: ["Responsive", "SCSS", "Componentized UI", "Maintenance"],
@@ -27,22 +73,9 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
       "QA 피드백 기반 UI 디테일 리팩토링",
     ],
     link: "https://ybmsmartschool.com/",
+    image: pubImg2,
   },
-  {
-    id: "pub-2",
-    title: "캐피탈 제휴 프로모션 마이크로사이트",
-    subtitle: "사내 단독 진행 · 반응형 · 10+ Pages · 인터랙션/모션 포함",
-    tags: ["HTML", "SCSS", "jQuery", "Animation", "Responsive"],
-    leftTitle: "담당 영역",
-    leftList: [
-      "10페이지 이상 단독 퍼블리싱",
-      "반응형 대응 및 SCSS 기반 공통 레이아웃 적용",
-      "jQuery로 타이머/슬라이드 등 간단 기능 구현",
-    ],
-    rightTitle: "모션/효과 구현",
-    rightList: ["차량 이동 모션", "타이머 모션", "슬라이드/전환 애니메이션"],
-    link: "https://nh.rchada.com/",
-  },
+
   {
     id: "pub-3",
     title: "금융 연계 프로모션 페이지 퍼블리싱",
@@ -62,6 +95,7 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
       "jQuery 기반 간단 인터랙션 적용",
     ],
     // 링크 없음
+    image: pubImg3,
   },
 
   {
@@ -82,6 +116,7 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
       "섹션 단위 재사용 가능한 구조 설계",
     ],
     link: "https://pickcar.kr/",
+    image: pubImg4,
   },
   {
     id: "pub-5",
@@ -101,6 +136,7 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
       "공통 스타일 가이드 유지",
     ],
     // 링크 없음
+    image: pubImg5,
   },
 ];
 
@@ -120,7 +156,7 @@ export const collabProjects: collabProjectItem[] = [
       "Kakao map api",
     ],
     github: "https://github.com/minji7901/HOLO",
-    image: img1,
+    image: collabImg1,
   },
   {
     id: "collab-2",
@@ -128,7 +164,7 @@ export const collabProjects: collabProjectItem[] = [
     description: "흑백요리사 출연진들의 국내 업장 위치 공유 웹사이트",
     tech: ["React", "JavaScript", "Vercel", "Tailwind CSS", "supabase"],
     github: "https://github.com/minji7901/Outsourcing-Project",
-    image: img2,
+    image: collabImg2,
   },
 ];
 
@@ -160,7 +196,6 @@ const toPublishingWork = (p: publishingPracticeItem): WorkProject => {
     ? "단독"
     : "협업";
 
-  // 🔥 impact 추론 로직 개선
   const subtitle = p.subtitle ?? "";
   const leftList = p.leftList ?? [];
   const rightList = p.rightList ?? [];
@@ -197,6 +232,7 @@ const toPublishingWork = (p: publishingPracticeItem): WorkProject => {
     checklistExample: "",
     link: p.link,
     raw: p,
+    image: p.image,
   };
 };
 
@@ -214,6 +250,7 @@ const toCollabWork = (c: collabProjectItem): WorkProject => {
     github: c.github,
     image: c.image,
     raw: c,
+    troubleshooting: "블로그 참고",
   };
 };
 
@@ -221,7 +258,6 @@ export const workProjects: WorkProject[] = [
   ...publishingPracticeProjects.map(toPublishingWork),
   ...collabProjects.map(toCollabWork),
 ].map((p) => {
-  // ✅ pub-2 링크 잘못 들어가던 문제 방지: 원본에 link 없으면 undefined 유지
   if (p.id === "pub-2") return { ...p, link: undefined };
   return p;
 });

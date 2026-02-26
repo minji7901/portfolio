@@ -10,6 +10,7 @@ export type publishingPracticeItem = {
   rightTitle: string;
   rightList: string[];
   link?: string;
+  image?: StaticImageData;
 };
 
 export type collabProjectItem = {

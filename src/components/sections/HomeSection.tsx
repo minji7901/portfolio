@@ -1,112 +1,203 @@
 "use client";
-import Image from "next/image";
-import Button from "@/components/ui/Button";
-import State from "@/components/ui/State";
+
+import React from "react";
+import { motion, type Variants } from "framer-motion";
 import Counter from "@/components/ui/Counter";
-import ProfileImg from "@/assets/images/hero/profile-img.png";
+import Image from "next/image";
+
+const container: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const leftItem: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+};
+
+const rightCard: Variants = {
+  hidden: { opacity: 0, y: 22, scale: 0.98, filter: "blur(4px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.35 },
+  },
+};
 
 const HomeSection = () => {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const chips = [
+    "반응형",
+    "접근성",
+    "컴포넌트 구조화",
+    "크로스 브라우징",
+    "예외 케이스 대응",
+    "Next · React · TypeScript 협업",
+  ];
 
   return (
-    <section className="yellow pt-0" id="home">
-      <div className="max-w-container mx-auto pt-[210px]">
-        <div className="flex justify-between items-center">
-          <div>
-            <State text="WEB PUBLISHER" color="green" />
-            <div className="relative">
-              <p className="font-bold text-6xl my-7 leading-[1.2]">
-                Web Publisher
-                <span className="block mt-6 text-4xl leading-[3rem]">
-                  운영을 기준으로 설계합니다. <br /> 유지보수에 강한 구조로
-                  구현합니다.
+    <section
+      className="relative overflow-hidden bg-gradient-to-br from-hero-from via-hero-via to-hero-to min-h-screen flex items-center"
+      id="home"
+    >
+      <div className="absolute inset-0 flex items-center pointer-events-none">
+        <div className="animate-orbit">
+          <div className="w-[420px] h-[420px] translate-x-0 bg-accent/15 rounded-full blur-3xl" />
+        </div>
+      </div>
+
+      <div className="relative z-10 max-w-container mx-auto w-full">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+        >
+          <div className="lg:col-span-7">
+            <motion.div
+              variants={leftItem}
+              className="inline-flex items-center gap-2"
+            >
+              <p className="text-text-secondary font-medium tracking-tight">
+                Web Publisher · Front-end Collaboration Ready
+              </p>
+            </motion.div>
+
+            <motion.h1
+              variants={leftItem}
+              className="mt-5 text-5xl md:text-6xl font-bold leading-[1.12] text-text-primary"
+            >
+              운영 가능한 구조로 빠르게, <br />
+              오래 가는 퍼블리싱을 합니다.
+            </motion.h1>
+
+            <motion.p
+              variants={leftItem}
+              className="mt-6 text-lg md:text-xl text-text-secondary leading-relaxed"
+            >
+              공통 컴포넌트·레이아웃을 기준으로 확장 가능한 UI를 구축하고,
+              운영/유지보수 리스크를 줄입니다. <br />
+              <span className="text-text-primary font-semibold">
+                마감 1~4주 선제 완료 경험
+              </span>
+              을 반복했습니다.
+            </motion.p>
+
+            <motion.div
+              variants={leftItem}
+              className="mt-8 flex flex-wrap gap-3"
+            >
+              <button
+                type="button"
+                onClick={() => scrollTo("work")}
+                className="rounded-2xl px-5 py-3 text-sm font-semibold text-text-primary shadow-[0_12px_30px_rgba(0,0,0,0.12)] hover:opacity-90 transition bg-white/30 backdrop-blur-md"
+              >
+                프로젝트 바로 보기
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollTo("contact")}
+                className="rounded-2xl px-5 py-3 text-sm font-semibold text-text-primary shadow-[0_12px_30px_rgba(0,0,0,0.12)] hover:opacity-90 transition bg-white/30 backdrop-blur-md"
+              >
+                연락하기
+              </button>
+            </motion.div>
+
+            <motion.div
+              variants={leftItem}
+              className="mt-10 flex flex-wrap gap-2"
+            >
+              {chips.map((t) => (
+                <span
+                  key={t}
+                  className="text-sm text-text-secondary bg-white/35 border border-white/40 backdrop-blur-md px-3 py-1.5 rounded-full"
+                >
+                  {t}
                 </span>
+              ))}
+            </motion.div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <motion.div
+              variants={rightCard}
+              className="rounded-3xl border border-white/40 bg-white/35 backdrop-blur-md p-6 shadow-[0_18px_60px_rgba(0,0,0,0.08)]"
+            >
+              <p className="text-sm text-text-secondary font-medium">
+                Snapshot · 실행형 강점
               </p>
 
-              <div className="absolute top-5 -left-36">
-                <Image
-                  src="/icons/heart-icon.svg"
-                  alt="icon"
-                  width={100}
-                  height={80}
-                />
-              </div>
-            </div>
+              <div className="mt-5 grid grid-cols-3 gap-4">
+                <div className="rounded-2xl border border-white/40 bg-white/45 backdrop-blur-md p-5">
+                  <p className="text-3xl font-extrabold leading-none text-text-primary">
+                    <Counter to={3} suffix="년+" />
+                  </p>
+                  <p className="mt-2 text-sm text-text-secondary">
+                    퍼블리싱 실무 <br />
+                    (에이전시·인하우스·SI)
+                  </p>
+                </div>
 
-            <div className="mt-8 flex gap-4 text-center">
-              <div className="border border-navi rounded-2xl px-5 py-4 bg-white/40">
-                <p className="text-3xl font-extrabold leading-none">
-                  <Counter to={3} suffix="년+" />
-                </p>
-                <p className="text-sm text-base-secondary mt-2">
-                  실무 퍼블리싱 경험
-                </p>
-              </div>
-              <div className="border border-navi rounded-2xl px-5 py-4 bg-white/40">
-                <p className="text-3xl font-extrabold leading-none">
-                  <Counter to={200} suffix="+" />
-                </p>
-                <p className="text-sm text-base-secondary mt-2">페이지 구현</p>
-              </div>
-              <div className="border border-navi rounded-2xl px-5 py-4 bg-white/40">
-                <p className="text-3xl font-extrabold leading-none">
-                  <Counter to={10} suffix="개+" />
-                </p>
-                <p className="text-sm text-base-secondary mt-2">
-                  단독 프로젝트 수행
-                </p>
-              </div>
-            </div>
+                <div className="rounded-2xl border border-white/40 bg-white/45 backdrop-blur-md p-5">
+                  <p className="text-3xl font-extrabold leading-none text-text-primary">
+                    <Counter to={10} suffix="개+" />
+                  </p>
+                  <p className="mt-2 text-sm text-text-secondary">
+                    단독 프로젝트
+                    <br />
+                    (납기/품질 포함 리딩)
+                  </p>
+                </div>
 
-            <ul className="my-8 text-xl text-base-secondary space-y-2">
-              <li>- 반응형·접근성·일관성 기준으로 UI를 구현합니다.</li>
-              <li>
-                - 컴포넌트/SCSS 구조화를 통해 재사용성과 유지보수성을 높입니다.
-              </li>
-              <li>- 빈 데이터·예외 상황을 고려해 UI를 설계합니다.</li>
-            </ul>
+                <div className="rounded-2xl border border-white/40 bg-white/45 backdrop-blur-md p-5">
+                  <p className="text-3xl font-extrabold leading-none text-text-primary">
+                    <Counter to={200} suffix="+" />
+                  </p>
+                  <p className="mt-2 text-sm text-text-secondary">
+                    Screen 구현
+                    <br />
+                    (대시보드/운영 화면 포함)
+                  </p>
+                </div>
+              </div>
 
-            <div className="flex gap-5">
-              <Button
-                text="View Work"
-                onClick={() => {
-                  document.getElementById("work")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }}
-              />
-              <Button
-                text="Experience"
-                onClick={() => {
-                  document.getElementById("experience")?.scrollIntoView({
-                    behavior: "smooth",
-                  });
-                }}
-              />
-            </div>
+              <div className="mt-6 rounded-2xl border border-white/40 bg-white/40 p-5">
+                <p className="text-sm font-semibold text-text-primary">
+                  제가 만드는 결과물은 이런 느낌이에요
+                </p>
+                <div className="mt-3 grid grid-cols-2 gap-3">
+                  <Image
+                    src="/home/ex1.png"
+                    alt="example 1"
+                    width={200}
+                    height={200}
+                    className="rounded-xl"
+                  />
+                  <Image
+                    src="/home/ex2.png"
+                    alt="example 2"
+                    width={200}
+                    height={200}
+                    className="rounded-xl"
+                  />
+                </div>
+                <p className="mt-10 text-xs text-text-secondary">
+                  * 실제 프로젝트 섹션에서 확인할 수 있어요.
+                </p>
+              </div>
+            </motion.div>
           </div>
-
-          <div className="relative">
-            <div className="border-2 border-base-primary rounded-[100%_100%_30px_30px] w-[400px] h-[500px] overflow-hidden">
-              <Image src={ProfileImg} alt="profile image" />
-            </div>
-            <div className="absolute top-0 right-0">
-              <Image
-                src="/icons/star2-icon.svg"
-                alt="icon"
-                width={50}
-                height={40}
-              />
-            </div>
-            <div className="absolute -bottom-5 -right-32">
-              <Image
-                src="/icons/shop-icon.svg"
-                alt="icon"
-                width={50}
-                height={40}
-              />
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -2,11 +2,26 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import State from "@/components/ui/State";
-import Button from "@/components/ui/Button";
-import TypeWrite from "../ui/TypeWrite";
-import { motion, Variants } from "framer-motion";
+import TypeWrite from "@/components/ui/TypeWrite";
+import { motion, type Variants } from "framer-motion";
 import StyleSheet from "@/components/ui/LoadingDot";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const dotVariants: Variants = {
+  pulse: {
+    scale: [1, 1.5, 1],
+    transition: { duration: 1.2, repeat: Infinity, ease: "easeInOut" },
+  },
+};
 
 const ContactSection = () => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +41,7 @@ const ContactSection = () => {
     const message = String(formData.get("message") || "").trim();
 
     if (!name || !contact || !message) {
-      setErrorMsg("필수 항목을 모두 입력해 주세요");
+      setErrorMsg("필수 항목을 모두 입력해 주세요.");
       return;
     }
 
@@ -39,165 +54,188 @@ const ContactSection = () => {
       });
 
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data?.error || "전송에 실패했습니다");
+      if (!res.ok) throw new Error(data?.error || "전송에 실패했습니다.");
 
-      setDoneMsg("전송되었습니다!");
+      setDoneMsg("메시지를 보냈습니다. 확인 후 연락드릴게요!");
       form.reset();
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "전송 중 오류가 발생했습니다";
-      setErrorMsg(message);
+      const msg =
+        err instanceof Error ? err.message : "전송 중 오류가 발생했습니다.";
+      setErrorMsg(msg);
     } finally {
       setLoading(false);
     }
   };
 
-  const dotVariants: Variants = {
-    pulse: {
-      scale: [1, 1.5, 1],
-      transition: {
-        duration: 1.2,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
   return (
-    <section id="contact" className="relative pb-14 yellow">
-      <div className="z-10 absolute left-1/2 -translate-x-1/2 -top-20 border-2 border-base-primary px-20 py-14 max-w-[1000px] mx-auto rounded-xl text-center bg-primary-light w-full">
-        <State text="CONTACT" color="pink" />
-        <p className="my-10 font-bold text-xl leading-8">
-          <TypeWrite
-            text={`사용자를 배려하는 마크업과 UI 구현을 좋아합니다.
-              좋은 인연으로 이어질 수 있다면 언제든지 연락 주세요.`}
-          />
-        </p>
-        <form onSubmit={handleSubmit}>
-          <table className="text-left w-full mb-20">
-            <tbody>
-              <tr>
-                <th>* 이름</th>
-                <th>*연락처/이메일</th>
-              </tr>
-              <tr>
-                <td>
+    <section id="contact" className="relative py-28 bg-base-background">
+      <div className="max-w-container mx-auto px-6">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
+        >
+          <motion.div
+            variants={fadeUp}
+            className="rounded-3xl border border-line bg-white p-8 h-full"
+          >
+            <p className="text-sm font-semibold tracking-[0.2em] text-text-muted">
+              CONTACT
+            </p>
+
+            <h2 className="mt-4 text-3xl md:text-4xl font-bold text-text-primary leading-tight">
+              같이 일할 퍼블리셔를 찾고 계신가요?
+            </h2>
+
+            <p className="mt-4 text-base text-text-secondary">
+              <TypeWrite
+                text={`일정이 흔들리지 않게 작업 범위를 정리하고,
+공통 UI와 체크리스트로 품질을 맞춰드립니다.
+편하게 연락 주세요.`}
+              />
+            </p>
+
+            <div className="mt-7 rounded-2xl border border-line bg-accent-soft p-5">
+              <p className="text-sm font-semibold text-text-secondary">
+                빠른 연락을 원하시면
+              </p>
+              <p className="mt-2 text-sm text-text-secondary leading-6">
+                아래 폼에{" "}
+                <span className="font-semibold text-text-primary">이메일</span>
+                을 남겨주시면 회신드릴게요. <br />
+                (프로젝트/업무 형태, 일정이 정해져 있으면 함께 적어주시면
+                좋아요.)
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            className="rounded-3xl border border-line bg-white p-8"
+          >
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label className="block">
+                  <span className="text-sm font-semibold text-text-secondary">
+                    * 이름
+                  </span>
                   <input
                     name="name"
-                    className="border-b-2 border-base-primary w-[90%] bg-transparent p-1 mt-2 pb-2 placeholder:text-base-secondary outline-none"
                     type="text"
                     placeholder="이름을 입력해주세요"
+                    className="mt-2 w-full rounded-2xl border border-line bg-base-background px-4 py-3
+                               text-text-primary placeholder:text-text-muted outline-none
+                               focus:border-accent"
                   />
-                </td>
-                <td>
+                </label>
+
+                <label className="block">
+                  <span className="text-sm font-semibold text-text-secondary">
+                    * 연락처/이메일
+                  </span>
                   <input
                     name="contact"
-                    className="border-b-2 border-base-primary w-[90%] bg-transparent p-1 mt-2 pb-2 placeholder:text-base-secondary outline-none"
                     type="text"
                     placeholder="연락처 또는 이메일을 입력해주세요"
+                    className="mt-2 w-full rounded-2xl border border-line bg-base-background px-4 py-3
+                               text-text-primary placeholder:text-text-muted outline-none
+                               focus:border-accent"
                   />
-                </td>
-              </tr>
-              <tr>
-                <th colSpan={2} className="pt-10">
+                </label>
+              </div>
+
+              <label className="block">
+                <span className="text-sm font-semibold text-text-secondary">
                   * 메시지
-                </th>
-              </tr>
-              <tr>
-                <td colSpan={2}>
-                  <textarea
-                    name="message"
-                    className="border-b-2 border-base-primary w-[95%] bg-transparent h-8 mt-2 px-1 placeholder:text-base-secondary resize-none outline-none"
-                    placeholder="남기고 싶은 메시지를 작성해주세요"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          {errorMsg && (
-            <p className="text-sm font-semibold text-red-600 mb-3">
-              {errorMsg}
+                </span>
+                <textarea
+                  name="message"
+                  placeholder="어떤 프로젝트인지, 필요한 범위/일정/참고 링크가 있으면 함께 적어주세요."
+                  className="mt-2 w-full min-h-[140px] rounded-2xl border border-line bg-base-background px-4 py-3
+                             text-text-primary placeholder:text-text-muted resize-none outline-none
+                             focus:border-accent"
+                />
+              </label>
+
+              {errorMsg && (
+                <p className="text-sm font-semibold text-red-600">{errorMsg}</p>
+              )}
+
+              {loading ? (
+                <motion.div
+                  animate="pulse"
+                  variants={dotVariants}
+                  className="flex justify-center"
+                >
+                  <StyleSheet />
+                </motion.div>
+              ) : doneMsg ? (
+                <p className="text-green-600 font-semibold">{doneMsg}</p>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full rounded-2xl bg-accent px-5 py-3 text-white font-semibold hover:bg-accent-hover transition"
+                >
+                  메시지 보내기
+                </button>
+              )}
+
+              <div className="pt-4 border-t border-line flex items-center justify-between gap-4 text-sm text-text-secondary">
+                <p>Blog / GitHub도 같이 확인하실 수 있어요.</p>
+                <div className="flex gap-3">
+                  <a
+                    className="w-11 h-11 grid place-items-center rounded-2xl border border-line bg-base-background"
+                    href="https://bom-na.tistory.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Blog"
+                  >
+                    <Image
+                      src="/icons/footer-icon1.svg"
+                      alt="blog"
+                      width={22}
+                      height={22}
+                    />
+                  </a>
+                  <a
+                    className="w-11 h-11 grid place-items-center rounded-2xl border border-line bg-base-background"
+                    href="https://github.com/minji7901"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                  >
+                    <Image
+                      src="/icons/footer-icon2.svg"
+                      alt="github"
+                      width={22}
+                      height={22}
+                    />
+                  </a>
+                </div>
+              </div>
+            </form>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-muted"
+        >
+          <div className="flex items-center gap-3">
+            <p className="font-semibold text-text-secondary">
+              © Made in Minji.
             </p>
-          )}
-          {loading ? (
-            <motion.div
-              animate="pulse"
-              transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
-              className="container"
-            >
-              <StyleSheet />
-            </motion.div>
-          ) : doneMsg ? (
-            <p className="text-green-500 font-semibold text-lg">{doneMsg}</p>
-          ) : (
-            <Button text="Submit" type="submit" />
-          )}
-        </form>
-      </div>
-      <div className="max-w-container mx-auto w-full flex justify-between pt-[500px] items-center relative">
-        <div className="absolute top-0 -left-32">
-          <Image
-            src="/icons/email-icon.svg"
-            alt="icon"
-            width={60}
-            height={60}
-            className="rotate-12"
-          />
-        </div>
-        <div className="absolute bottom-40 -right-32">
-          <Image
-            src="/icons/star-icon.svg"
-            alt="icon"
-            width={60}
-            height={60}
-            className="-rotate-12"
-          />
-        </div>
-        <p className="font-bold text-base-secondary">©Made in Minji.</p>
-        <div className="flex gap-5">
-          <a
-            className="border-2 border-base-primary rounded-md bg-primary-light p-1"
-            href="https://bom-na.tistory.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/icons/footer-icon1.svg"
-              alt="img"
-              width={30}
-              height={30}
-              className=""
-            />
-          </a>
-          <a
-            className="border-2 border-base-primary rounded-md bg-primary-light p-1"
-            href="https://github.com/minji7901"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/icons/footer-icon2.svg"
-              alt="img"
-              width={30}
-              height={30}
-              className=""
-            />
-          </a>
-          {/* <a
-            className="border-2 border-base-primary rounded-md bg-primary-light p-1"
-            href="https://www.notion.so/Frontend-Developer-2e2cd058617b8109a06bcb40b83cdd54?source=copy_link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/icons/footer-icon3.svg"
-              alt="img"
-              width={30}
-              height={30}
-              className=""
-            />
-          </a> */}
-        </div>
+          </div>
+
+          <p className="text-center sm:text-right">
+            빠르게 확인 후 답장드리겠습니다.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

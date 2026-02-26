@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import img1 from "@/assets/images/projects/img1.png";
 import img2 from "@/assets/images/projects/img2.png";
 import type {
@@ -29,26 +30,6 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
   },
   {
     id: "pub-2",
-    title: "금융 연계 프로모션 페이지 퍼블리싱",
-    subtitle: "사내 단독 진행 · PC/Mobile 반응형 · 20+ pages · 2주+ 일정 단축",
-    tags: ["HTML", "CSS", "jQuery", "Responsive", "Fast Delivery"],
-    leftTitle: "담당 영역",
-    leftList: [
-      "사내 단독 퍼블리싱 (제휴 프로모션 다페이지 구성)",
-      "PC/Mobile 반응형 레이아웃 대응",
-      "20페이지 이상 퍼블리싱 및 공통 UI 정리",
-      "마감일 대비 2주 이상 빠른 납품",
-    ],
-    rightTitle: "구현 포인트",
-    rightList: [
-      "공통 레이아례이아웃/스타일 템플릿 재사용으로 속도 개선",
-      "폼/리스트/프로모션 UI 일관성 유지",
-      "jQuery 기반 간단 인터랙션 적용",
-    ],
-    // 링크 없음
-  },
-  {
-    id: "pub-3",
     title: "캐피탈 제휴 프로모션 마이크로사이트",
     subtitle: "사내 단독 진행 · 반응형 · 10+ Pages · 인터랙션/모션 포함",
     tags: ["HTML", "SCSS", "jQuery", "Animation", "Responsive"],
@@ -62,6 +43,27 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
     rightList: ["차량 이동 모션", "타이머 모션", "슬라이드/전환 애니메이션"],
     link: "https://nh.rchada.com/",
   },
+  {
+    id: "pub-3",
+    title: "금융 연계 프로모션 페이지 퍼블리싱",
+    subtitle: "사내 단독 진행 · PC/Mobile 반응형 · 20+ pages · 2주+ 일정 단축",
+    tags: ["HTML", "CSS", "jQuery", "Responsive", "Fast Delivery"],
+    leftTitle: "담당 영역",
+    leftList: [
+      "사내 단독 퍼블리싱 (제휴 프로모션 다페이지 구성)",
+      "PC/Mobile 반응형 레이아웃 대응",
+      "20페이지 이상 퍼블리싱 및 공통 UI 정리",
+      "마감일 대비 2주 이상 빠른 납품",
+    ],
+    rightTitle: "구현 포인트",
+    rightList: [
+      "공통 레이아웃/스타일 템플릿 재사용으로 속도 개선",
+      "폼/리스트/프로모션 UI 일관성 유지",
+      "jQuery 기반 간단 인터랙션 적용",
+    ],
+    // 링크 없음
+  },
+
   {
     id: "pub-4",
     title: "브랜드 제휴 프로모션 랜딩 퍼블리싱",
@@ -129,3 +131,97 @@ export const collabProjects: collabProjectItem[] = [
     image: img2,
   },
 ];
+
+export type WorkProject = {
+  id: string;
+  category: "publishing" | "collab";
+  title: string;
+  subtitle?: string;
+  type: "단독" | "협업";
+  domain: string;
+  roleLine: string;
+  impact: string;
+  troubleshooting?: string;
+  stack: string[];
+
+  bullets?: string[];
+  opsPoints?: string[];
+  checklistExample?: string;
+
+  raw?: publishingPracticeItem | collabProjectItem;
+
+  link?: string;
+  github?: string;
+  image?: StaticImageData;
+};
+
+const toPublishingWork = (p: publishingPracticeItem): WorkProject => {
+  const inferredType: WorkProject["type"] = p.subtitle?.includes("단독")
+    ? "단독"
+    : "협업";
+
+  // 🔥 impact 추론 로직 개선
+  const subtitle = p.subtitle ?? "";
+  const leftList = p.leftList ?? [];
+  const rightList = p.rightList ?? [];
+
+  let impact = "운영 기준 구조 설계";
+
+  if (subtitle.includes("100페이지")) {
+    impact = "100페이지+ 대규모 퍼블리싱 구축";
+  } else if (subtitle.includes("20+")) {
+    impact = "20페이지+ 다페이지 구성";
+  } else if (subtitle.includes("2주")) {
+    impact = "마감 대비 2주+ 일정 단축";
+  } else if (subtitle.includes("One-page")) {
+    impact = "모바일 원페이지 전환율 중심 설계";
+  } else if (leftList.some((item) => item.includes("반응형"))) {
+    impact = "반응형 구조 체계화";
+  } else if (rightList.some((item) => item.includes("재사용"))) {
+    impact = "공통 컴포넌트 구조화";
+  }
+
+  return {
+    id: p.id,
+    category: "publishing",
+    title: p.title,
+    subtitle: p.subtitle,
+    type: inferredType,
+    domain: "프로모션 / 플랫폼 퍼블리싱",
+    roleLine: leftList[0] ?? "퍼블리싱 담당",
+    impact,
+    troubleshooting: rightList[rightList.length - 1] ?? undefined,
+    stack: p.tags ?? [],
+    bullets: rightList,
+    opsPoints: [],
+    checklistExample: "",
+    link: p.link,
+    raw: p,
+  };
+};
+
+const toCollabWork = (c: collabProjectItem): WorkProject => {
+  return {
+    id: c.id,
+    category: "collab",
+    title: c.title,
+    subtitle: c.description,
+    type: "협업",
+    domain: c.description,
+    roleLine: "프론트엔드 개발(팀 프로젝트)",
+    impact: "배포 및 데이터 연동 경험",
+    stack: c.tech ?? [],
+    github: c.github,
+    image: c.image,
+    raw: c,
+  };
+};
+
+export const workProjects: WorkProject[] = [
+  ...publishingPracticeProjects.map(toPublishingWork),
+  ...collabProjects.map(toCollabWork),
+].map((p) => {
+  // ✅ pub-2 링크 잘못 들어가던 문제 방지: 원본에 link 없으면 undefined 유지
+  if (p.id === "pub-2") return { ...p, link: undefined };
+  return p;
+});

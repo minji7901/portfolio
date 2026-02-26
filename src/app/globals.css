@@ -73,10 +73,7 @@ html {
   scroll-behavior: smooth;
 }
 section {
-  @apply py-[130px] border-b-2 border-base-primary bg-primary-light;
-}
-section.yellow {
-  @apply bg-primary;
+  @apply py-[130px];
 }
 
 /* skills section */
@@ -107,20 +104,20 @@ section.yellow {
   position: relative;
   &::before {
     content: "";
-    @apply absolute left-[155px] top-1 w-6 h-6 rounded-full border-2 border-base-secondary;
+    @apply absolute left-[155px] top-1 w-6 h-6 rounded-full border-2 border-red-500;
   }
   &::after {
     content: "";
-    @apply absolute left-[165px] top-10 w-[2px] h-[70%]  bg-base-secondary;
+    @apply absolute left-[165px] top-10 w-[2px] h-[70%]  bg-red-500;
   }
   &:nth-child(1)::before {
-    @apply bg-pastel-beige;
+    @apply bg-red-500;
   }
   &:nth-child(2)::before {
-    @apply bg-pastel-pink;
+    @apply bg-red-500;
   }
   &:nth-child(3)::before {
-    @apply bg-pastel-green;
+    @apply bg-red-500;
   }
 }
 

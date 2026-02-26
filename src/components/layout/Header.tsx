@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-const SECTION_IDS = ["home", "work", "experience", "contact"];
+const SECTION_IDS = ["home", "proof", "work", "process", "contact"];
 
 const Header = () => {
   const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,21 +33,34 @@ const Header = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-white border-b-2 border-base-primary z-[1000]">
-      <div className="flex items-center justify-between max-w-container mx-auto h-20">
-        <h1 className="text-3xl font-bold">✶MJ</h1>
-        <nav className="flex items-center gap-5 text-lg font-semibold capitalize">
+    <header
+      className={`fixed top-0 left-0 w-full border-b-1 border-text-primary z-[1000] transition-[1s] ${scrolled ? "shadow-md bg-white/20 backdrop-blur-sm" : ""}`}
+    >
+      <div className="flex items-center justify-between max-w-container mx-auto h-24">
+        <Link href="#home">
+          <h1 className="text-xl font-bold">Minji's Portfolio</h1>
+        </Link>
+        <nav className="flex items-center gap-5 text-xl font-semibold capitalize w-1/2 text-center">
           {SECTION_IDS.map((id) => (
-            <a
+            <Link
               key={id}
               href={`#${id}`}
-              className={`transition-colors ${
-                active === id ? "text-primary-dark" : ""
+              className={`transition-colors uppercase flex-1 ${
+                active === id ? "text-text-primary" : "text-text-secondary"
               }`}
             >
               {id}
-            </a>
+            </Link>
           ))}
         </nav>
       </div>

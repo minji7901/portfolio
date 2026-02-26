@@ -1,19 +1,21 @@
 import Header from "@/components/layout/Header";
 import HomeSection from "@/components/sections/HomeSection";
-import ExperienceSection from "@/components/sections/ExperienceSection";
 import WorkSection from "@/components/sections/WorkSection";
 import ContactSection from "@/components/sections/ContactSection";
+import ProofSection from "@/components/sections/ProofSection";
+import ProcessSection from "@/components/sections/ProcessSection";
 
- const Home = () => {
+const Home = () => {
   return (
     <>
       <Header />
       <HomeSection />
+      <ProofSection />
       <WorkSection />
-      <ExperienceSection />
+      <ProcessSection />
       <ContactSection />
     </>
   );
-}
+};
 
 export default Home;

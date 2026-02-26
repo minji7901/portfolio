@@ -16,14 +16,6 @@ const FrontendCollaboDetails = ({ item }: { item: collabProjectItem }) => {
           {item.tech.map((tag) => tag).join(", ")}
         </p>
       </div>
-      <a
-        href={item.github}
-        className="px-5 py-2 rounded-full border border-base-secondary text-base-secondary text-sm font-semibold"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        View GitHub
-      </a>
     </div>
   );
 };

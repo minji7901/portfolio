@@ -6,40 +6,58 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: [
-    "bg-pastel-blue",
-    "bg-pastel-green",
-    "bg-pastel-pink",
-    "bg-pastel-beige",
-  ],
+
   theme: {
     extend: {
       animation: {
-        "spin-slow": "spin 10s linear infinite",
+        orbit: "orbit 25s linear infinite",
       },
       maxWidth: {
-        container: "1200px",
+        container: "1400px",
+      },
+      keyframes: {
+        orbit: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       colors: {
-        primary: {
-          DEFAULT: "#FFF4C7",
-          light: "#FAFAF7",
-          dark: "#FDD175",
+        warm: {
+          DEFAULT: "#FAF9F6", // main background
+          section: "#F3EFE7", // section background
+          card: "#FFFFFF", // card background
         },
-        pastel: {
-          beige: "#EEE8DD",
-          green: "#DCE6DF",
-          blue: "#E3E8F0",
-          pink: "#F2D6D0",
-        },
+        
+        /* 전체 배경 */
         base: {
-          primary: "#2B2B2B",
-          secondary: "#4A4A4A",
+          background: "#FFFFFF",
+          section: "#F9FAFB",
         },
-        line: "#E7E7E2",
-        navi: "#1F2A44",
+
+        /* 히어로 전용 */
+        hero: {
+          from: "#FDECEC", // 연한 로즈
+          via: "#FAF3F3", // 거의 화이트
+          to: "#FFF8F6", // 크림톤
+        },
+
+        /* 포인트 (블루 말고 딥 플럼) */
+        accent: {
+          DEFAULT: "#7C3AED",
+          hover: "#6D28D9",
+          soft: "#F3E8FF",
+        },
+
+        text: {
+          primary: "#111827",
+          secondary: "#4B5563",
+          muted: "#9CA3AF",
+        },
+
+        line: "#E5E7EB",
       },
     },
   },
 };
+
 export default config;

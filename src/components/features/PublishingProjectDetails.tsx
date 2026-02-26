@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "@/components/ui/Button";
 import type { publishingPracticeItem } from "@/types/project";
 
 const Pill = ({ children }: { children: React.ReactNode }) => (
-  <span className="px-3 py-1 bg-line rounded-full text-xs font-semibold">
+  <span className="px-3 py-1 bg-warm-card border border-line rounded-full text-xs font-semibold">
     {children}
   </span>
 );
@@ -16,7 +15,7 @@ const PublishingProjectDetail = ({
   const hasLink = Boolean(item.link);
 
   return (
-    <details className="group border border-line rounded-2xl p-6 open:shadow-md transition bg-white">
+    <details className="group border border-line rounded-2xl p-6 open:shadow-md transition bg-warm-card">
       <summary className="flex justify-between items-center cursor-pointer list-none">
         <div className="min-w-0">
           <h4 className="text-lg font-semibold truncate">{item.title}</h4>
@@ -29,7 +28,7 @@ const PublishingProjectDetail = ({
           </div>
         </div>
 
-        <span className="transition group-open:rotate-180 text-base-secondary">
+        <span className="transition group-open:rotate-180 text-text-secondary">
           ▼
         </span>
       </summary>
@@ -37,7 +36,7 @@ const PublishingProjectDetail = ({
       <div className="mt-6 grid grid-cols-2 gap-6 text-sm leading-relaxed">
         <div>
           <h5 className="font-semibold mb-2">{item.leftTitle}</h5>
-          <ul className="list-inside space-y-1 text-base-secondary">
+          <ul className="list-inside space-y-1 text-text-primary">
             {item.leftList.map((v, idx) => (
               <li key={idx}>- {v}</li>
             ))}
@@ -46,7 +45,7 @@ const PublishingProjectDetail = ({
 
         <div>
           <h5 className="font-semibold mb-2">{item.rightTitle}</h5>
-          <ul className="list-inside space-y-1 text-base-secondary">
+          <ul className="list-inside space-y-1 text-text-primary">
             {item.rightList.map((v, idx) => (
               <li key={idx}>- {v}</li>
             ))}
@@ -58,7 +57,7 @@ const PublishingProjectDetail = ({
         {hasLink ? (
           <a
             href={item.link}
-            className="px-5 py-2 rounded-full border border-base-secondary text-base-secondary text-sm font-semibold"
+            className="px-5 py-2 rounded-full border border-base-secondary text-text-secondary text-sm font-semibold bg-warm-card"
             target="_blank"
             rel="noopener noreferrer"
           >

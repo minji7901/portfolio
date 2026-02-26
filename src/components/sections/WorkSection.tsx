@@ -48,7 +48,7 @@ const WorkSection = () => {
   );
 
   const featured = useMemo(() => {
-    const preferredIds = ["pub-1", "pub-2"];
+    const preferredIds = ["pub-0", "pub-1"];
     const preferred = preferredIds
       .map((id) => publishing.find((p) => p.id === id))
       .filter(Boolean) as WorkProject[];
@@ -154,7 +154,7 @@ const WorkSection = () => {
                 exit="exit"
                 className="mt-10"
               >
-                <div className="grid grid-cols-1 gap-5">
+                <div className="grid grid-cols-2 gap-5">
                   {restPublishing.map((item) => (
                     <WorkProjectCard
                       key={item.id}

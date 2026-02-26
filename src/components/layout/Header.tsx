@@ -47,8 +47,8 @@ const Header = () => {
       className={`fixed top-0 left-0 w-full border-b-1 border-text-primary z-[1000] transition-[1s] ${scrolled ? "shadow-md bg-white/20 backdrop-blur-sm" : ""}`}
     >
       <div className="flex items-center justify-between max-w-container mx-auto h-24">
-        <Link href="#home">
-          <h1 className="text-xl font-bold">Minji&apos;s Portfolio</h1>
+        <Link href="#home" className="text-xl font-bold">
+          Minji&apos;s Portfolio
         </Link>
         <nav className="flex items-center gap-5 text-xl font-semibold capitalize w-1/2 text-center">
           {SECTION_IDS.map((id) => (

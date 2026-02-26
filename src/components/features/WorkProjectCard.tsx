@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
+import { Wrench, Trophy, User } from "lucide-react";
 import { type WorkProject } from "@/data/projects";
-import { Wrench, Trophy } from "lucide-react";
 
 type Props = {
   item: WorkProject;
@@ -14,17 +14,17 @@ const WorkProjectCard = ({ item, onOpen }: Props) => {
     <button
       type="button"
       onClick={() => onOpen(item)}
-      className="
-        group w-full text-left
-        border border-line/90
-        rounded-3xl
-        bg-warm-card
-        p-7
-        transition-all duration-300
-        hover:-translate-y-1
-        hover:shadow-[0_12px_30px_rgba(17,24,39,0.08)]
-        hover:border-accent/30
-      "
+      className="relative 
+          group w-full text-left
+          border border-line/90
+          rounded-3xl
+          bg-warm-card
+          p-7
+          transition-all duration-300
+          hover:-translate-y-1
+          hover:shadow-[0_12px_30px_rgba(17,24,39,0.08)]
+          hover:border-accent/30
+        "
     >
       <div>
         <h3 className="text-xl md:text-2xl font-bold text-text-primary group-hover:text-accent transition-colors">
@@ -39,7 +39,8 @@ const WorkProjectCard = ({ item, onOpen }: Props) => {
       </div>
 
       <div className="mt-6 space-y-3">
-        <p className="text-sm text-text-secondary">
+        <p className="text-sm text-text-secondary flex gap-2">
+          <User size={16} className="text-accent mt-[2px] shrink-0" />
           <span className="font-semibold text-text-primary">Role.</span>{" "}
           {item.roleLine}
         </p>
@@ -62,26 +63,6 @@ const WorkProjectCard = ({ item, onOpen }: Props) => {
           </span>
         </p>
       </div>
-
-      <div className="mt-6 flex flex-wrap gap-2">
-        {item.stack.slice(0, 8).map((t) => (
-          <span
-            key={t}
-            className="
-              px-3 py-1 text-sm font-semibold
-              text-text-secondary
-              border border-line
-              bg-warm-section
-              rounded-full
-              transition-colors
-              group-hover:bg-accent-soft
-            "
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-
       <div className="mt-7 flex items-center">
         <span className="ml-auto text-sm font-semibold text-text-muted group-hover:text-accent transition-colors">
           자세히 보기 →

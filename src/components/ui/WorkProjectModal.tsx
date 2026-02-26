@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, ExternalLink, Github } from "lucide-react";
 import type { WorkProject } from "@/data/projects";
 import PublishingProjectDetail from "@/components/features/PublishingProjectDetails";
-import FrontendCollaboDetails from "@/components/features/FrontendCollaboDetails";
 
 type Props = {
   open: boolean;
@@ -91,6 +91,15 @@ const WorkProjectModal = ({ open, item, onClose }: Props) => {
 
             <div className="max-h-[55vh] overflow-auto px-6 py-6 bg-warm">
               <div className="rounded-3xl border border-line p-6 bg-warm-card">
+                <div className="flex items-center justify-center mb-5">
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={`${item.title} project screenshot`}
+                      className="rounded-2xl border border-line object-cover"
+                    />
+                  )}
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm font-semibold text-text-muted">
@@ -133,60 +142,26 @@ const WorkProjectModal = ({ open, item, onClose }: Props) => {
                   </div>
                 </div>
 
-                {(item.bullets?.length ||
-                  item.opsPoints?.length ||
-                  item.checklistExample) && (
-                  <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {item.bullets?.length ? (
-                      <div className="rounded-2xl bg-warm-card border border-line p-4">
-                        <p className="text-sm font-bold text-text-primary">
-                          내가 한 일
-                        </p>
-                        <ul className="mt-3 space-y-2">
-                          {item.bullets.slice(0, 6).map((b) => (
-                            <li
-                              key={b}
-                              className="text-sm text-text-secondary flex gap-2"
-                            >
-                              <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-accent" />
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-
-                    {item.opsPoints?.length ? (
-                      <div className="rounded-2xl bg-warm-card border border-line p-4">
-                        <p className="text-sm font-bold text-text-primary">
-                          운영/유지보수 포인트
-                        </p>
-                        <ul className="mt-3 space-y-2">
-                          {item.opsPoints.slice(0, 6).map((b) => (
-                            <li
-                              key={b}
-                              className="text-sm text-text-secondary flex gap-2"
-                            >
-                              <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-accent" />
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ) : null}
-
-                    {item.checklistExample ? (
-                      <div className="rounded-2xl bg-warm-card border border-line p-4">
-                        <p className="text-sm font-bold text-text-primary">
-                          체크리스트 적용 예
-                        </p>
-                        <p className="mt-3 text-sm text-text-secondary">
-                          {item.checklistExample}
-                        </p>
-                      </div>
-                    ) : null}
-                  </div>
-                )}
+                <div className="mt-6  gap-4">
+                  {item.bullets?.length ? (
+                    <div className="rounded-2xl bg-warm-card border border-line p-4">
+                      <p className="text-sm font-bold text-text-primary">
+                        내가 한 일
+                      </p>
+                      <ul className="mt-3 space-y-2">
+                        {item.bullets.slice(0, 6).map((b) => (
+                          <li
+                            key={b}
+                            className="text-sm text-text-secondary flex gap-2"
+                          >
+                            <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-accent" />
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
 
                 {(item.link || item.github) && (
                   <div className="mt-5 flex flex-wrap gap-3">
@@ -225,10 +200,7 @@ const WorkProjectModal = ({ open, item, onClose }: Props) => {
                     item={item.raw}
                   />
                 ) : (
-                  <FrontendCollaboDetails
-                    // @ts-expect-error - raw 타입은 collabProjectItem
-                    item={item.raw}
-                  />
+                  ""
                 )}
               </div>
 

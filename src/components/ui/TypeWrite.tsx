@@ -6,7 +6,7 @@ interface Props {
   className?: string;
 }
 
-const TypeWrite = ({ text, className }: Props) => {
+const TypeWrite = ({ text }: Props) => {
   const [displayed, setDisplayed] = useState("");
   const [index, setIndex] = useState(0);
 

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useMemo, useState, useCallback } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { workProjects, type WorkProject } from "@/data/projects";
 import WorkProjectCard from "@/components/features/WorkProjectCard";

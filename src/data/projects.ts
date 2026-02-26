@@ -1,4 +1,4 @@
-// projects.ts
+import type { StaticImageData } from "next/image";
 import img1 from "@/assets/images/projects/img1.png";
 import img2 from "@/assets/images/projects/img2.png";
 import type {
@@ -152,7 +152,7 @@ export type WorkProject = {
 
   link?: string;
   github?: string;
-  image?: any;
+  image?: StaticImageData;
 };
 
 const toPublishingWork = (p: publishingPracticeItem): WorkProject => {

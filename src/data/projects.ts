@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+
 import pubImg0 from "@/assets/images/projects/pubImg0.png";
 import pubImg1 from "@/assets/images/projects/pubImg1.png";
 import pubImg2 from "@/assets/images/projects/pubImg2.png";
@@ -7,6 +8,7 @@ import pubImg4 from "@/assets/images/projects/pubImg4.png";
 import pubImg5 from "@/assets/images/projects/pubImg5.png";
 import collabImg1 from "@/assets/images/projects/collabImg1.png";
 import collabImg2 from "@/assets/images/projects/collabImg2.png";
+
 import type {
   publishingPracticeItem,
   collabProjectItem,
@@ -16,104 +18,105 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
   {
     id: "pub-0",
     title: "등기업무 서비스 플랫폼 리뉴얼",
-    subtitle:
-      "프리랜서 단독 진행 · PC Web · 100+ Pages · 기존 대비 1개월 조기 마감",
-    tags: ["Vue", "Nuxt", "SCSS", "FullCalendar", "Swiper", "Legacy Renewal"],
-    leftTitle: "담당 영역",
+    subtitle: "프리랜서 단독 진행 · PC Web · 100+ Pages",
+    tags: ["Vue", "Nuxt", "SCSS", "FullCalendar", "Swiper"],
+    leftTitle: "담당 업무",
     leftList: [
-      "100페이지 이상 단독 퍼블리싱 (팝업 포함)",
-      "기존 서비스 구조 분석 후 UI 마크업 전면 재구성",
-      "Nuxt 기반 컴포넌트 구조에 맞춘 퍼블리싱 작업",
-      "SCSS 공통 구조 설계 및 유지보수 고려한 스타일 체계 정리",
-      "PC 전용 화면 최적화 작업",
+      "100페이지 이상 단독 퍼블리싱",
+      "기존 서비스 구조를 확인하고 UI 마크업 전면 수정",
+      "Nuxt 기반 컴포넌트 구조에 맞춰 퍼블리싱",
+      "SCSS 공통 스타일 구조 정리",
+      "PC 환경에 맞춘 화면 구현",
     ],
-    rightTitle: "기술 적용 & 개선 포인트",
+    rightTitle: "주요 작업",
     rightList: [
-      "FullCalendar 커스터마이징 및 일정 UI 구조 개선",
-      "Swiper 기반 배너/콘텐츠 슬라이드 구현",
-      "기존 레거시 마크업 정리 및 시맨틱 구조 개선",
-      "프로젝트 일정 1개월 단축 마감",
+      "FullCalendar 커스터마이징",
+      "Swiper를 활용한 배너 및 콘텐츠 슬라이드 구현",
+      "기존 마크업을 정리하고 시맨틱 구조로 개선",
+      "예정된 일정보다 1개월 빠르게 작업 완료",
     ],
     image: pubImg0,
-    //link: "리뉴얼 전 사이트 링크 (리뉴얼 버전은 미배포 상태)",
   },
   {
     id: "pub-1",
     title: "캐피탈 제휴 프로모션 마이크로사이트",
-    subtitle: "사내 단독 진행 · 반응형 · 10+ Pages · 인터랙션/모션 포함",
+    subtitle: "사내 단독 진행 · 반응형 · 10+ Pages",
     tags: ["HTML", "SCSS", "jQuery", "Animation", "Responsive"],
-    leftTitle: "담당 영역",
+    leftTitle: "담당 업무",
     leftList: [
       "10페이지 이상 단독 퍼블리싱",
-      "반응형 대응 및 SCSS 기반 공통 레이아웃 적용",
-      "jQuery로 타이머/슬라이드 등 간단 기능 구현",
+      "PC / Mobile 반응형 구현",
+      "SCSS 기반 공통 레이아웃 구성",
+      "jQuery를 활용한 간단한 기능 구현",
     ],
-    rightTitle: "모션/효과 구현",
-    rightList: ["차량 이동 모션", "타이머 모션", "슬라이드/전환 애니메이션"],
+    rightTitle: "주요 작업",
+    rightList: [
+      "차량 이동 애니메이션 구현",
+      "타이머 기능 구현",
+      "슬라이드 및 화면 전환 효과 구현",
+    ],
     link: "https://nh.rchada.com/",
     image: pubImg1,
   },
   {
     id: "pub-2",
     title: "B2B 교육 서비스 퍼블리싱",
-    subtitle: "에이전시 프로젝트 · 단독/협업 · 반응형 · 100페이지 이상",
-    tags: ["Responsive", "SCSS", "Componentized UI", "Maintenance"],
-    leftTitle: "담당 영역",
+    subtitle: "에이전시 프로젝트 · 단독/협업 · 반응형 · 100+ Pages",
+    tags: ["HTML", "SCSS", "Responsive", "SCSS Structure"],
+    leftTitle: "담당 업무",
     leftList: [
-      "메인 페이지 단독 퍼블리싱 (100%)",
+      "메인 페이지 단독 퍼블리싱",
       "학생 / 학부모 채널 전체 단독 퍼블리싱",
-      "선생 채널 약 40% 협업 (사수와 공동 작업)",
+      "선생 채널 약 40% 퍼블리싱",
       "PC / Tablet / Mobile 반응형 구현",
     ],
-    rightTitle: "마크업 전략 & 개선",
+    rightTitle: "주요 작업",
     rightList: [
-      "breakpoint 체계 설계 및 반응형 구조화",
-      "SCSS 구조 분리 (variables / mixins / components)",
-      "재사용 가능한 공통 컴포넌트 제작",
-      "QA 피드백 기반 UI 디테일 리팩토링",
+      "반응형 breakpoint 구성",
+      "SCSS 구조 분리 및 공통 스타일 관리",
+      "반복되는 UI를 공통 구조로 제작",
+      "QA 피드백을 반영해 화면 수정",
     ],
     link: "https://ybmsmartschool.com/",
     image: pubImg2,
   },
-
   {
     id: "pub-3",
     title: "금융 연계 프로모션 페이지 퍼블리싱",
-    subtitle: "사내 단독 진행 · PC/Mobile 반응형 · 20+ pages · 2주+ 일정 단축",
-    tags: ["HTML", "CSS", "jQuery", "Responsive", "Fast Delivery"],
-    leftTitle: "담당 영역",
+    subtitle: "사내 단독 진행 · PC / Mobile 반응형 · 20+ Pages",
+    tags: ["HTML", "CSS", "jQuery", "Responsive"],
+    leftTitle: "담당 업무",
     leftList: [
-      "사내 단독 퍼블리싱 (제휴 프로모션 다페이지 구성)",
-      "PC/Mobile 반응형 레이아웃 대응",
-      "20페이지 이상 퍼블리싱 및 공통 UI 정리",
-      "마감일 대비 2주 이상 빠른 납품",
+      "20페이지 이상 단독 퍼블리싱",
+      "PC / Mobile 반응형 구현",
+      "페이지별 공통 UI 및 스타일 정리",
+      "프로모션 페이지 전체 화면 구성",
     ],
-    rightTitle: "구현 포인트",
+    rightTitle: "주요 작업",
     rightList: [
-      "공통 레이아웃/스타일 템플릿 재사용으로 속도 개선",
-      "폼/리스트/프로모션 UI 일관성 유지",
-      "jQuery 기반 간단 인터랙션 적용",
+      "공통 레이아웃과 스타일을 재사용해 작업",
+      "폼 / 리스트 / 프로모션 UI 구성",
+      "jQuery를 활용한 간단한 인터랙션 구현",
+      "예정된 마감일보다 2주 이상 빠르게 작업 완료",
     ],
-    // 링크 없음
     image: pubImg3,
   },
-
   {
     id: "pub-4",
     title: "브랜드 제휴 프로모션 랜딩 퍼블리싱",
     subtitle: "사내 단독 진행 · 반응형 · 모션 포함",
     tags: ["HTML", "CSS", "jQuery", "Motion", "Responsive"],
-    leftTitle: "담당 영역",
+    leftTitle: "담당 업무",
     leftList: [
-      "단독 퍼블리싱",
-      "반응형 레이아웃 구현",
-      "jQuery 기반 간단 인터랙션 처리",
+      "프로모션 랜딩 페이지 단독 퍼블리싱",
+      "PC / Mobile 반응형 구현",
+      "jQuery를 활용한 간단한 인터랙션 구현",
     ],
-    rightTitle: "구현 포인트",
+    rightTitle: "주요 작업",
     rightList: [
       "차량 이동 모션 애니메이션 구현",
-      "CTA/섹션 전환 흐름 최적화",
-      "섹션 단위 재사용 가능한 구조 설계",
+      "CTA와 섹션 전환 효과 구현",
+      "섹션별 스타일을 정리해 일관된 화면 구성",
     ],
     link: "https://pickcar.kr/",
     image: pubImg4,
@@ -121,21 +124,20 @@ export const publishingPracticeProjects: publishingPracticeItem[] = [
   {
     id: "pub-5",
     title: "모바일 원페이지 프로모션 퍼블리싱",
-    subtitle: "사내 단독 진행 · Mobile only · One-page · 간단 기능 구현",
+    subtitle: "사내 단독 진행 · Mobile Only · One Page",
     tags: ["HTML", "CSS", "jQuery", "Mobile"],
-    leftTitle: "담당 영역",
+    leftTitle: "담당 업무",
     leftList: [
       "원페이지 단독 퍼블리싱",
-      "모바일 뷰포트 최적화",
-      "간단 기능 구현",
+      "모바일 화면에 맞춰 레이아웃 구현",
+      "간단한 기능 및 인터랙션 구현",
     ],
-    rightTitle: "구현 포인트",
+    rightTitle: "주요 작업",
     rightList: [
-      "스크롤 흐름에 맞춘 섹션 구성",
-      "가벼운 인터랙션으로 클릭/전환 유도 강화",
-      "공통 스타일 가이드 유지",
+      "스크롤 흐름에 맞춰 섹션 구성",
+      "클릭 및 화면 전환 인터랙션 구현",
+      "기존 스타일 가이드에 맞춰 화면 제작",
     ],
-    // 링크 없음
     image: pubImg5,
   },
 ];
@@ -144,16 +146,16 @@ export const collabProjects: collabProjectItem[] = [
   {
     id: "collab-1",
     title: "HOLO",
-    description: "1인 가구 청년 자취생을 위한 정보 제공 서비스",
+    description: "1인 가구 청년을 위한 자취 정보 제공 서비스",
     tech: [
       "Next.js",
       "TypeScript",
       "Vercel",
       "TanStack Query",
       "Tailwind CSS",
-      "zustand",
-      "supabase",
-      "Kakao map api",
+      "Zustand",
+      "Supabase",
+      "Kakao Map API",
     ],
     github: "https://github.com/minji7901/HOLO",
     image: collabImg1,
@@ -161,8 +163,8 @@ export const collabProjects: collabProjectItem[] = [
   {
     id: "collab-2",
     title: "이븐한 맛집",
-    description: "흑백요리사 출연진들의 국내 업장 위치 공유 웹사이트",
-    tech: ["React", "JavaScript", "Vercel", "Tailwind CSS", "supabase"],
+    description: "흑백요리사 출연진의 국내 업장 정보를 제공하는 웹사이트",
+    tech: ["React", "JavaScript", "Vercel", "Tailwind CSS", "Supabase"],
     github: "https://github.com/minji7901/Outsourcing-Project",
     image: collabImg2,
   },
@@ -179,13 +181,10 @@ export type WorkProject = {
   impact: string;
   troubleshooting?: string;
   stack: string[];
-
   bullets?: string[];
   opsPoints?: string[];
   checklistExample?: string;
-
   raw?: publishingPracticeItem | collabProjectItem;
-
   link?: string;
   github?: string;
   image?: StaticImageData;
@@ -200,20 +199,16 @@ const toPublishingWork = (p: publishingPracticeItem): WorkProject => {
   const leftList = p.leftList ?? [];
   const rightList = p.rightList ?? [];
 
-  let impact = "운영 기준 구조 설계";
+  let impact = "페이지 퍼블리싱 및 UI 구현";
 
-  if (subtitle.includes("100페이지")) {
-    impact = "100페이지+ 대규모 퍼블리싱 구축";
+  if (subtitle.includes("100+")) {
+    impact = "100페이지 이상 단독 퍼블리싱";
   } else if (subtitle.includes("20+")) {
-    impact = "20페이지+ 다페이지 구성";
-  } else if (subtitle.includes("2주")) {
-    impact = "마감 대비 2주+ 일정 단축";
-  } else if (subtitle.includes("One-page")) {
-    impact = "모바일 원페이지 전환율 중심 설계";
+    impact = "20페이지 이상 단독 퍼블리싱";
+  } else if (subtitle.includes("One Page")) {
+    impact = "모바일 원페이지 퍼블리싱";
   } else if (leftList.some((item) => item.includes("반응형"))) {
-    impact = "반응형 구조 체계화";
-  } else if (rightList.some((item) => item.includes("재사용"))) {
-    impact = "공통 컴포넌트 구조화";
+    impact = "PC / Mobile 반응형 구현";
   }
 
   return {
@@ -222,10 +217,10 @@ const toPublishingWork = (p: publishingPracticeItem): WorkProject => {
     title: p.title,
     subtitle: p.subtitle,
     type: inferredType,
-    domain: "프로모션 / 플랫폼 퍼블리싱",
+    domain: "웹 퍼블리싱",
     roleLine: leftList[0] ?? "퍼블리싱 담당",
     impact,
-    troubleshooting: rightList[rightList.length - 1] ?? undefined,
+    troubleshooting: rightList[0] ?? undefined,
     stack: p.tags ?? [],
     bullets: rightList,
     opsPoints: [],
@@ -243,14 +238,14 @@ const toCollabWork = (c: collabProjectItem): WorkProject => {
     title: c.title,
     subtitle: c.description,
     type: "협업",
-    domain: c.description,
-    roleLine: "프론트엔드 개발(팀 프로젝트)",
-    impact: "배포 및 데이터 연동 경험",
+    domain: "프론트엔드 협업 프로젝트",
+    roleLine: "프론트엔드 개발",
+    impact: "팀 프로젝트를 통한 React / Next.js 개발 경험",
     stack: c.tech ?? [],
     github: c.github,
     image: c.image,
+    troubleshooting: "팀원들과 역할을 나누어 기능을 구현하고 배포까지 진행",
     raw: c,
-    troubleshooting: "블로그 참고",
   };
 };
 
@@ -259,5 +254,6 @@ export const workProjects: WorkProject[] = [
   ...collabProjects.map(toCollabWork),
 ].map((p) => {
   if (p.id === "pub-2") return { ...p, link: undefined };
+
   return p;
 });

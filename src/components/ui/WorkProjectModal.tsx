@@ -30,151 +30,176 @@ const WorkProjectModal = ({ open, item, onClose }: Props) => {
     };
   }, [open, onClose]);
 
+  if (!item) return null;
+
   return (
     <AnimatePresence>
-      {open && item && (
+      {open && (
         <motion.div
-          className="fixed inset-0 z-[999] flex items-center justify-center px-4"
+          className="fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          aria-modal="true"
           role="dialog"
+          aria-modal="true"
+          aria-label={`${item.title} 프로젝트 상세`}
         >
           <button
+            type="button"
             className="absolute inset-0 bg-black/40"
             onClick={onClose}
-            aria-label="Close modal backdrop"
+            aria-label="닫기"
           />
-
           <motion.div
-            className="relative w-full max-w-5xl rounded-3xl bg-warm-card border border-line shadow-xl overflow-hidden"
+            className="
+              relative z-[100]
+              w-full max-w-5xl
+              max-h-[92vh]
+              overflow-hidden
+              rounded-2xl md:rounded-3xl
+              bg-warm-card
+              border border-line
+              shadow-xl
+            "
             initial={{ opacity: 0, y: 16, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
-            <div className="flex items-start justify-between gap-4 px-6 py-5 border-b border-line bg-warm">
-              <div>
-                <p className="text-sm font-semibold text-text-muted tracking-[0.14em]">
-                  {item.category === "publishing"
-                    ? "PUBLISHING PROJECT"
-                    : "COLLABORATION PROJECT"}
-                </p>
-                <h3 className="mt-2 text-xl md:text-2xl font-bold text-text-primary">
+            <div className="flex items-start justify-between gap-4 px-5 py-4 md:px-7 md:py-5 border-b border-line bg-warm">
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-medium text-text-muted">
+                    {item.type}
+                  </span>
+                  <span className="text-xs text-text-muted">·</span>
+                  <span className="text-xs text-text-muted">{item.domain}</span>
+                </div>
+                <h2 className="mt-2 text-xl md:text-2xl font-bold text-text-primary">
                   {item.title}
-                </h3>
+                </h2>
                 {item.subtitle && (
-                  <p className="mt-2 text-base text-text-secondary">
+                  <p className="mt-2 text-sm md:text-base text-text-secondary leading-relaxed">
                     {item.subtitle}
                   </p>
                 )}
-
-                <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-text-secondary">
-                  <span className="px-3 py-1 rounded-full bg-warm-card border border-line">
-                    {item.type}
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-warm-card border border-line">
-                    {item.domain}
-                  </span>
-                </div>
               </div>
-
               <button
+                type="button"
                 onClick={onClose}
-                className="w-10 h-10 flex items-center justify-center"
-                aria-label="Close modal"
+                className="
+                  shrink-0
+                  w-9 h-9
+                  flex items-center justify-center
+                  rounded-full
+                  hover:bg-warm-card
+                  transition
+                "
+                aria-label="프로젝트 상세 닫기"
               >
                 <X size={18} className="text-text-secondary" />
               </button>
             </div>
-
-            <div className="max-h-[55vh] overflow-auto px-6 py-6 bg-warm">
-              <div className="rounded-3xl border border-line p-6 bg-warm-card">
-                <div className="flex items-center justify-center mb-5">
-                  {item.image && (
+            <div className="max-h-[calc(92vh-140px)] overflow-y-auto">
+              <div className="px-5 py-5 md:px-7 md:py-7">
+                {item.image && (
+                  <div className="flex justify-center rounded-2xl border border-line bg-warm overflow-hidden">
                     <Image
                       src={item.image}
-                      alt={`${item.title} project screenshot`}
-                      className="rounded-2xl border border-line object-cover"
+                      alt={`${item.title} 프로젝트 화면`}
+                      className="w-auto max-w-full max-h-[320px] object-contain"
                     />
-                  )}
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
+                  </div>
+                )}
+                <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="rounded-2xl border border-line bg-white p-5">
                     <p className="text-sm font-semibold text-text-muted">
-                      Role
+                      담당 업무
                     </p>
-                    <p className="mt-2 text-base text-text-primary">
+                    <p className="mt-2 text-sm md:text-base text-text-primary leading-relaxed">
                       {item.roleLine}
                     </p>
                   </div>
-                  <div>
+                  <div className="rounded-2xl border border-line bg-white p-5">
                     <p className="text-sm font-semibold text-text-muted">
-                      Impact
+                      주요 결과
                     </p>
-                    <p className="mt-2 text-base text-text-primary">
+                    <p className="mt-2 text-sm md:text-base text-text-primary leading-relaxed">
                       {item.impact}
                     </p>
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-text-muted">
-                      Troubleshooting
+                </div>
+                {item.bullets?.length ? (
+                  <div className="mt-4 rounded-2xl border border-line bg-white p-5 md:p-6">
+                    <p className="text-base font-bold text-text-primary">
+                      주요 작업
                     </p>
-                    <p className="mt-2 text-base text-text-primary">
-                      {item.troubleshooting}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-text-muted">
-                      Stack
-                    </p>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {item.stack.map((t) => (
-                        <span
-                          key={t}
-                          className="px-3 py-1 text-sm font-semibold text-text-secondary bg-warm-card border border-line rounded-full"
+                    <ul className="mt-4 space-y-3">
+                      {item.bullets.slice(0, 6).map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="flex gap-3 text-sm md:text-base text-text-secondary leading-relaxed"
                         >
-                          {t}
-                        </span>
+                          <span className="mt-[8px] w-1.5 h-1.5 shrink-0 rounded-full bg-accent" />
+                          <span>{bullet}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
+                  </div>
+                ) : null}
+                <div className="mt-4 rounded-2xl border border-line bg-white p-5 md:p-6">
+                  <p className="text-base font-bold text-text-primary">
+                    사용 기술
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {item.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="
+                          px-3 py-1.5
+                          rounded-full
+                          bg-warm
+                          border border-line
+                          text-sm
+                          text-text-secondary
+                        "
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-
-                <div className="mt-6  gap-4">
-                  {item.bullets?.length ? (
-                    <div className="rounded-2xl bg-warm-card border border-line p-4">
-                      <p className="text-sm font-bold text-text-primary">
-                        내가 한 일
-                      </p>
-                      <ul className="mt-3 space-y-2">
-                        {item.bullets.slice(0, 6).map((b) => (
-                          <li
-                            key={b}
-                            className="text-sm text-text-secondary flex gap-2"
-                          >
-                            <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-accent" />
-                            <span>{b}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </div>
-
+                {item.category === "publishing" && item.raw && (
+                  <div className="mt-6">
+                    <PublishingProjectDetail
+                      item={
+                        item.raw as Parameters<
+                          typeof PublishingProjectDetail
+                        >[0]["item"]
+                      }
+                    />
+                  </div>
+                )}
                 {(item.link || item.github) && (
-                  <div className="mt-5 flex flex-wrap gap-3">
+                  <div className="mt-6 flex flex-wrap gap-3">
                     {item.link && (
                       <a
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warm-card border border-line text-sm font-semibold text-text-secondary
-                                   hover:-translate-y-[1px] hover:shadow-sm transition"
+                        className="
+                          inline-flex items-center gap-2
+                          px-4 py-2.5
+                          rounded-full
+                          bg-text-primary
+                          text-white
+                          text-sm font-semibold
+                          hover:opacity-90
+                          transition
+                        "
                       >
-                        <ExternalLink size={16} className="text-accent" />
-                        View Link
+                        <ExternalLink size={16} />
+                        사이트 보기
                       </a>
                     )}
                     {item.github && (
@@ -182,31 +207,29 @@ const WorkProjectModal = ({ open, item, onClose }: Props) => {
                         href={item.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warm-card border border-line text-sm font-semibold text-text-secondary
-                                   hover:-translate-y-[1px] hover:shadow-sm transition"
+                        className="
+                          inline-flex items-center gap-2
+                          px-4 py-2.5
+                          rounded-full
+                          border border-line
+                          bg-white
+                          text-text-secondary
+                          text-sm font-semibold
+                          hover:bg-warm
+                          transition
+                        "
                       >
-                        <Github size={16} className="text-accent" />
-                        GitHub
+                        <Github size={16} />
+                        GitHub 보기
                       </a>
                     )}
                   </div>
                 )}
+                <p className="mt-6 text-xs md:text-sm text-text-muted">
+                  * 일부 프로젝트는 회사 사유로 실제 사이트 링크를 공개하지
+                  않았습니다.
+                </p>
               </div>
-
-              <div className="mt-6">
-                {item.category === "publishing" ? (
-                  <PublishingProjectDetail
-                    // @ts-expect-error - raw 타입은 publishingPracticeItem
-                    item={item.raw}
-                  />
-                ) : (
-                  ""
-                )}
-              </div>
-
-              <p className="mt-6 text-sm text-text-secondary">
-                * 일부 프로젝트는 회사 사유로 링크 공개가 어렵습니다.
-              </p>
             </div>
           </motion.div>
         </motion.div>

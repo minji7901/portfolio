@@ -1,7 +1,7 @@
 import Header from "@/components/layout/Header";
 import HomeSection from "@/components/sections/HomeSection";
 import WorkSection from "@/components/sections/WorkSection";
-import ContactSection from "@/components/sections/ContactSection";
+import ClosingSection from "@/components/sections/ClosingSection";
 import ProofSection from "@/components/sections/ProofSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 
@@ -13,7 +13,7 @@ const Home = () => {
       <ProofSection />
       <WorkSection />
       <ProcessSection />
-      <ContactSection />
+      <ClosingSection />
     </>
   );
 };

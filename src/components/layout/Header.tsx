@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const SECTION_IDS = ["home", "proof", "work", "process", "contact"];
+const SECTION_IDS = ["home", "proof", "work", "process"];
 
 const Header = () => {
   const [active, setActive] = useState("home");
@@ -12,15 +12,14 @@ const Header = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
+        const visibleEntry = entries.find((entry) => entry.isIntersecting);
+        if (visibleEntry) {
+          setActive(visibleEntry.target.id);
+        }
       },
       {
         root: null,
-        rootMargin: "-40% 0px -40% 0px",
+        rootMargin: "-35% 0px -55% 0px",
         threshold: 0,
       },
     );
@@ -35,31 +34,45 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 30);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full border-b-1 border-text-primary z-[1000] transition-[1s] ${scrolled ? "shadow-md bg-white/20 backdrop-blur-sm" : ""}`}
+      className={`fixed top-0 left-0 z-[1000] w-full transition-all duration-300 ${
+        scrolled
+          ? "border-b border-black/5 bg-white/85 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
+      }`}
     >
-      <div className="flex items-center justify-between max-w-container mx-auto h-24">
-        <Link href="#home" className="text-xl font-bold">
-          Minji&apos;s Portfolio
+      <div className="max-w-container mx-auto flex h-20 items-center justify-between px-4 sm:px-6">
+        <Link
+          href="#home"
+          className="text-lg font-bold tracking-tight text-text-primary"
+        >
+          Minji<span className="text-accent">.</span>
         </Link>
-        <nav className="flex items-center gap-5 text-xl font-semibold capitalize w-1/2 text-center">
+        <nav className="flex items-center gap-4 sm:gap-7">
           {SECTION_IDS.map((id) => (
             <Link
               key={id}
               href={`#${id}`}
-              className={`transition-colors uppercase flex-1 ${
-                active === id ? "text-text-primary" : "text-text-secondary"
+              className={`relative py-2 text-xs sm:text-sm font-medium tracking-wide transition-colors ${
+                active === id
+                  ? "text-text-primary"
+                  : "text-text-muted hover:text-text-primary"
               }`}
             >
-              {id}
+              {id.toUpperCase()}
+              {active === id && (
+                <span className="absolute -bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-accent" />
+              )}
             </Link>
           ))}
         </nav>

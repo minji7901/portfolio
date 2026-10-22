@@ -1,10 +1,10 @@
 "use client";
 
-import { ArrowUpRight, Search, X } from "lucide-react";
-import { workProjects } from "@/data/projects";
+import { Search, X } from "lucide-react";
 import { projectFilters } from "@/data/portfolio";
 import type { WorkProject } from "@/types/project";
 import type { ProjectSearch } from "@/hooks/useProjectSearch";
+import ProjectListItem from "@/components/features/ProjectListItem";
 import ProjectDetail from "@/components/features/ProjectDetail";
 type Props = {
   search: ProjectSearch;
@@ -32,7 +32,6 @@ export default function WorkSection({
             설명보다,
             <br />
             <span>만들어온 것들.</span>
-            <sup>({workProjects.length.toString().padStart(2, "0")})</sup>
           </h1>
           <p className="page-lead">
             실무 퍼블리싱부터 프론트엔드 협업까지.
@@ -69,33 +68,12 @@ export default function WorkSection({
           </div>
           <div className="work-list">
             {projects.map((project, index) => (
-              <button
-                className="work-row"
+              <ProjectListItem
                 key={project.id}
-                onClick={() => onSelectProject(project)}
-              >
-                <span className="work-number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <span className="work-category">
-                    {project.category === "publishing"
-                      ? "WEB PUBLISHING"
-                      : "TEAM PROJECT"}{" "}
-                    <span>/ {project.type}</span>
-                  </span>
-                  <h2>{project.title}</h2>
-                  <p>
-                    {project.roleLine} · {project.troubleshooting}
-                  </p>
-                  <div className="row-tags">
-                    {project.stack.slice(0, 4).map((technology) => (
-                      <span key={technology}>{technology}</span>
-                    ))}
-                  </div>
-                </div>
-                <ArrowUpRight className="work-arrow" size={30} />
-              </button>
+                project={project}
+                index={index}
+                onSelect={onSelectProject}
+              />
             ))}
           </div>
           {!projects.length && (
@@ -112,3 +90,4 @@ export default function WorkSection({
     </div>
   );
 }
+

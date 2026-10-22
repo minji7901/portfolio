@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useProjectSearch } from "@/hooks/useProjectSearch";
 import { ChevronRight } from "lucide-react";
 import { portfolioFiles } from "@/data/portfolio";
@@ -24,6 +25,8 @@ export default function EditorPortfolio() {
   const [selectedProject, setSelectedProject] = useState<WorkProject | null>(
     null,
   );
+  const contentKey = `${page}-${selectedProject?.id ?? "index"}-${projectSearch.filter}-${projectSearch.query}`;
+  const contentRef = useScrollReveal(contentKey);
   const currentFile =
     portfolioFiles.find((file) => file.id === page) ?? portfolioFiles[0];
   function navigateToPage(nextPage: PortfolioPage) {
@@ -64,6 +67,7 @@ export default function EditorPortfolio() {
           <span className="breadcrumb-preview">◉ Live preview</span>
         </div>
         <main
+          ref={contentRef}
           id="studio-main"
           role="tabpanel"
           aria-labelledby={`tab-${page}`}
